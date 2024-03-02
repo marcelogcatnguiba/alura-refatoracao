@@ -8,6 +8,7 @@ using Alura.Adopet.Console.Utils;
 
 namespace Alura.Adopet.Console.Services
 {
+    [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
     public class ImportService
     {
         private readonly IPetRepository _repository;

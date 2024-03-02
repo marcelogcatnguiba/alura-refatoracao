@@ -6,6 +6,7 @@ using Alura.Adopet.Console.Utils;
 
 namespace Alura.Adopet.Console.Services
 {
+    [ClassDocuments("show", "Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.")]
     public class ShowService
     {
         public void ListarPetsDeArquivo(string caminhoDoArquivo)
