@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Alura.Adopet.Console.Repository;
 using Alura.Adopet.Console.Utils;
 
@@ -11,9 +7,9 @@ namespace Alura.Adopet.Console.Services
     public class ListService
     {
         private readonly IPetRepository _repository;
-        public ListService()
+        public ListService(IPetRepository repository)
         {
-            _repository = new PetRepository();
+            _repository = repository;
         }
         public async Task ListarPetsCadastrados()
         {

@@ -6,9 +6,9 @@ namespace Alura.Adopet.Console.ConfigureHttp
     {
         private readonly HttpClient _client;
         public HttpClient GetClient { get => _client; }
-        public HttpClientPet()
+        public HttpClientPet(string uri = "http://localhost:5057")
         {
-            _client = ConfiguraHttpClient("http://localhost:5057");
+            _client = ConfiguraHttpClient(uri);
         }
         private HttpClient ConfiguraHttpClient(string url)
         {

@@ -1,13 +1,20 @@
-﻿using Alura.Adopet.Console.Services;
+﻿using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.Repository;
+using Alura.Adopet.Console.Services;
 
 Console.ForegroundColor = ConsoleColor.Green;
 try
 {
     var comando = args[0].Trim();
+    HttpClientPet client;
+    PetRepository repository;
+
     switch (comando)
     {
         case "import":
-            var import = new ImportService();
+            client = new HttpClientPet();
+            repository = new PetRepository(client.GetClient);
+            var import = new ImportService(repository);
             await import.ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
             break;
 
@@ -24,7 +31,9 @@ try
             break;
 
         case "list":
-            var list = new ListService();
+            client = new HttpClientPet();
+            repository = new PetRepository(client.GetClient);
+            var list = new ListService(repository);
             await list.ListarPetsCadastrados();
             break;
 

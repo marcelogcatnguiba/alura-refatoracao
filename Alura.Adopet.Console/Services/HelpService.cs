@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
 using Alura.Adopet.Console.Utils;
 
 namespace Alura.Adopet.Console.Services
@@ -35,29 +30,6 @@ namespace Alura.Adopet.Console.Services
         {
             if (_dic.ContainsKey(comando.ToLower()))
                 System.Console.WriteLine(_dic[comando].Descricao);
-
-            // switch (comando.ToLower())
-            // {
-            //     case "help":
-            //         System.Console.WriteLine("Comando que exibe informações de ajuda dos comandos.");
-            //         System.Console.WriteLine("Digite adopet help <comando> ou simplemente adopet help");
-            //         break;
-
-            //     case "import":
-            //         System.Console.WriteLine("Realiza a importação em lote de um arquivos de pets.");
-            //         System.Console.WriteLine($"Digite adopet import <arquivo>");
-            //         break;
-
-            //     case "show":
-            //         System.Console.WriteLine("Comando que exibe no terminal o conteúdo do arquivo importado.");
-            //         System.Console.WriteLine($"Digite adopet show <arquivo>.");
-            //         break;
-
-            //     case "list":
-            //         System.Console.WriteLine("Comando que exibe a lista de pets cadastrados no sistema");
-            //         System.Console.WriteLine("Digite adopet list");
-            //         break;
-            // }
         }
     }
 }
