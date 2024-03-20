@@ -4,15 +4,21 @@ using Alura.Adopet.Console.Utils;
 namespace Alura.Adopet.Console.Services
 {
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
-    public class ImportService
+    public class ImportService : IComando
     {
         private readonly IPetRepository _repository;
-        public ImportService(IPetRepository repository)
+        public ImportService()
         {
-            _repository = repository;
+            _repository = new PetRepository();
         }
 
-        public async Task ImportarArquivoPets(string caminhoArquivoImportacao)
+        public async Task ExecutarComando(string[] args)
+        {
+            await ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
+
+        }
+
+        private async Task ImportarArquivoPets(string caminhoArquivoImportacao)
         {
             var listaDePet = LeitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
 

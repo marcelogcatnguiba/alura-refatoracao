@@ -1,13 +1,14 @@
 using System.Net.Http.Json;
+using Alura.Adopet.Console.ConfigureHttp;
 
 namespace Alura.Adopet.Console.Repository
 {
     public class PetRepository : IPetRepository
     {
         private readonly HttpClient _client;
-        public PetRepository(HttpClient client)
+        public PetRepository()
         {
-            _client = client;
+            _client = new HttpClientPet().GetClient;
         }
 
         public async Task<HttpResponseMessage> CreatePetAsync(Pet pet)

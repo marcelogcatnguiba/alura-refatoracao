@@ -1,46 +1,18 @@
-﻿using Alura.Adopet.Console.ConfigureHttp;
-using Alura.Adopet.Console.Repository;
-using Alura.Adopet.Console.Services;
+﻿using Alura.Adopet.Console.Entities.Enums;
+using Alura.Adopet.Console.Factory;
+using Alura.Adopet.Console.Utils.Extensions;
 
 Console.ForegroundColor = ConsoleColor.Green;
 try
 {
     var comando = args[0].Trim();
-    HttpClientPet client;
-    PetRepository repository;
 
-    switch (comando)
-    {
-        case "import":
-            client = new HttpClientPet();
-            repository = new PetRepository(client.GetClient);
-            var import = new ImportService(repository);
-            await import.ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
-            break;
+    SelecionaComandoFactory selecionaComando = new();
+    var comandoEnum = (TipoComando)Enum.Parse(typeof(TipoComando), comando.PrimeiraLetraMaiuscula());
+    var comandoSelect = selecionaComando.CriarComando(comandoEnum);
 
-        case "help":
-            var help = new HelpService();
+    await comandoSelect.ExecutarComando(args);
 
-            if (args.Length == 1) help.AjudaComandos();
-            else help.AjudaComandoEspecifico(comando: args[1]);
-            break;
-
-        case "show":
-            var show = new ShowService();
-            show.ListarPetsDeArquivo(caminhoDoArquivo: args[1]);
-            break;
-
-        case "list":
-            client = new HttpClientPet();
-            repository = new PetRepository(client.GetClient);
-            var list = new ListService(repository);
-            await list.ListarPetsCadastrados();
-            break;
-
-        default:
-            Console.WriteLine("Comando inválido!");
-            break;
-    }
 }
 catch (Exception ex)
 {
