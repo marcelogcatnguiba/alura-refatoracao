@@ -1,6 +1,5 @@
 
 using Alura.Adopet.Console.Entities.Enums;
-using Alura.Adopet.Console.Repository;
 using Alura.Adopet.Console.Services;
 
 namespace Alura.Adopet.Console.Factory

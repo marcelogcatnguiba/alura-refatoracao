@@ -1,3 +1,5 @@
+using Alura.Adopet.Console.Utils.Extensions;
+
 namespace Alura.Adopet.Console.Utils
 {
     public static class LeitorArquivo
@@ -9,10 +11,11 @@ namespace Alura.Adopet.Console.Utils
             {
                 while (!sr.EndOfStream)
                 {
-                    string[] propriedades = sr.ReadLine()!.Split(';');
-                    Pet pet = new Pet(Guid.Parse(propriedades[0]), propriedades[1], TipoPet.Cachorro);
+                    // string[] propriedades = sr.ReadLine()!.Split(';');
+                    // Pet pet = new Pet(Guid.Parse(propriedades[0]), propriedades[1], TipoPet.Cachorro);
 
-                    listaDePet.Add(pet);
+                    var pet = sr.ReadLine();
+                    listaDePet.Add(pet!.RetornaPetString());
                 }
             }
 

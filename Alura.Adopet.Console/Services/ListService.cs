@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.Repository;
+using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Utils;
 
 namespace Alura.Adopet.Console.Services
@@ -6,10 +6,10 @@ namespace Alura.Adopet.Console.Services
     [ClassDocuments("list", "Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list")]
     public class ListService : IComando
     {
-        private readonly IPetRepository _repository;
+        private readonly HttpClientPet _repository;
         public ListService()
         {
-            _repository = new PetRepository();
+            _repository = new HttpClientPet();
         }
 
         public async Task ExecutarComando(string[] args)

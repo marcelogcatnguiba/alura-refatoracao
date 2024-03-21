@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Alura.Adopet.Console.Entities.Enums;
-using Alura.Adopet.Console.Repository;
 using Alura.Adopet.Console.Services;
 
 namespace Alura.Adopet.Console.Factory
