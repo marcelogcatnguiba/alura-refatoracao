@@ -20,6 +20,7 @@ namespace Alura.Adopet.Console.Tests
         }
 
         [Fact]
+        [Trait("API", "Fora")]
         public async Task DadoAPIFora_DeveRetornarExcecao()
         {
             var cliente = new HttpClientPet(uri: "http://localhost:1111");

@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Alura.Adopet.Console.Utils.Extensions;
-using Xunit.Sdk;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Alura.Adopet.Console.Tests
 {
-    public class PetCSVTest
+
+    public class RetornaPetStringTests
     {
         [Fact]
+        [Trait("Pet", "Valido")]
         public void DeveRetornarPet_CasoStringValida()
         {
             string linha = "456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;1";
@@ -20,6 +18,7 @@ namespace Alura.Adopet.Console.Tests
         }
 
         [Fact]
+        [Trait("Pet", "Invalido")]
         public void DeveRetornarExcecao_CasoStringForInvalida()
         {
             string linha = "456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;1;2";
@@ -28,6 +27,8 @@ namespace Alura.Adopet.Console.Tests
         }
 
         [Fact]
+        [Trait("Pet", "Null")]
+        [Trait("Pet", "Vazio")]
         public void DeveRetornarExcecao_CasoStringVaziaOuNula()
         {
             string str = "";
@@ -35,6 +36,7 @@ namespace Alura.Adopet.Console.Tests
             Assert.Throws<Exception>(() => str.RetornaPetString());
         }
         [Fact]
+        [Trait("Pet", "Guid")]
         public void DeveRetornarExcecao_GuidInvalido()
         {
             string linha = "456b24f4-19e2-4423-84;Lima Limão;1";
@@ -42,6 +44,7 @@ namespace Alura.Adopet.Console.Tests
             Assert.Throws<FormatException>(() => linha.RetornaPetString());
         }
         [Fact]
+        [Trait("Pet", "TipoPet")]
         public void DeveRetornarExcecao_CasoTipoPetInvalido()
         {
             string linha = "456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;a";
