@@ -10,16 +10,16 @@ namespace Alura.Adopet.API.Dados.Repository
         private DataBaseContext _context;
         public ClienteRepository(DataBaseContext ctx)
         {
-            _context= ctx;
+            _context = ctx;
         }
         public Cliente Adicionar(Cliente _cliente)
         {
             _context.Add(_cliente);
-            _context.SaveChanges();        
+            _context.SaveChanges();
             return _cliente;
         }
 
-        public Cliente Atualizar(int id, Cliente _cliente)
+        public Cliente? Atualizar(int id, Cliente _cliente)
         {
             var _obj = this.ObterPorId(_cliente.Id);
             if (_obj == null)

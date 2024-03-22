@@ -10,16 +10,16 @@ namespace Alura.Adopet.API.Dados.Repository
         private DataBaseContext _context;
         public PetRepository(DataBaseContext ctx)
         {
-            _context= ctx;
+            _context = ctx;
         }
         public Pet Adicionar(Pet _pet)
         {
             _context.Add(_pet);
-            _context.SaveChanges();        
+            _context.SaveChanges();
             return _pet;
         }
 
-        public Pet Atualizar(int id, Pet _pet)
+        public Pet? Atualizar(int id, Pet _pet)
         {
             var _obj = this.ObterPorId(_pet.Id);
             if (_obj == null)
@@ -50,7 +50,7 @@ namespace Alura.Adopet.API.Dados.Repository
 
         public async Task<List<Pet>> ObterTodos()
         {
-            return await _context.Pets.Include(prop=>prop.Proprietario).ToListAsync();
+            return await _context.Pets.Include(prop => prop.Proprietario).ToListAsync();
         }
     }
 }

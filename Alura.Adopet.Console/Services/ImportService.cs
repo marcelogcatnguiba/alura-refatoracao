@@ -6,10 +6,10 @@ namespace Alura.Adopet.Console.Services
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
     public class ImportService : IComando
     {
-        private readonly HttpClientPet _repository;
+        private readonly HttpClientPet _client;
         public ImportService()
         {
-            _repository = new HttpClientPet();
+            _client = new HttpClientPet();
         }
 
         public async Task ExecutarComando(string[] args)
@@ -26,7 +26,7 @@ namespace Alura.Adopet.Console.Services
             {
                 try
                 {
-                    var resposta = await _repository.CreatePetAsync(pet);
+                    var resposta = await _client.CreatePetAsync(pet);
                 }
                 catch (Exception ex)
                 {

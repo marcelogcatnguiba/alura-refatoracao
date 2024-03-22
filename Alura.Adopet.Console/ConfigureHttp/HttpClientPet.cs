@@ -8,17 +8,9 @@ namespace Alura.Adopet.Console.ConfigureHttp
         private readonly HttpClient _client;
         public HttpClientPet(string uri = "http://localhost:5057")
         {
-            _client = ConfiguraHttpClient(uri);
+            _client = PetClientFactory.GetHttpClient(uri);
         }
-        private HttpClient ConfiguraHttpClient(string url)
-        {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.BaseAddress = new Uri(url);
 
-            return client;
-        }
         public async Task<HttpResponseMessage> CreatePetAsync(Pet pet)
         {
             HttpResponseMessage? response = null;

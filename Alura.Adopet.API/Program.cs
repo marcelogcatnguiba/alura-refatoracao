@@ -5,7 +5,7 @@ using Alura.Adopet.API.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);// Criando uma aplicação Web.
+var builder = WebApplication.CreateBuilder(args);// Criando uma aplicaï¿½ï¿½o Web.
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -17,19 +17,19 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 
 builder.Services.AddScoped<ClienteRepository>()
                 .AddScoped<PetRepository>()
-                .AddScoped<IEventoService,EventoService>()               
+                .AddScoped<IEventoService, EventoService>()
                 .AddDbContext<DataBaseContext>(opt => opt.UseInMemoryDatabase("AdopetDB"));
 
 //Habilitando o swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Adicionando serviços.
+//Adicionando serviï¿½os.
 var serviceProvider = builder.Services.BuildServiceProvider();
 var eventoService = serviceProvider.GetService<IEventoService>();
 
 var app = builder.Build();
-eventoService.GenerateFakeDate();
+eventoService!.GenerateFakeDate();
 
 // Ativando o Swagger
 app.UseSwagger();
@@ -45,7 +45,8 @@ app.MapGet("/proprietario/list", ([FromServices] ClienteRepository repo) =>
     return repo.ObterTodos();
 });
 
-app.MapPost("/pet/add", ([FromServices] PetRepository repo, [FromBody] Pet pet) => {
+app.MapPost("/pet/add", ([FromServices] PetRepository repo, [FromBody] Pet pet) =>
+{
     return repo.Adicionar(pet);
 });
 
@@ -74,5 +75,5 @@ app.UseSwaggerUI(
     }
 );
 
-// Roda a aplicação
+// Roda a aplicaï¿½ï¿½o
 app.Run();
