@@ -35,6 +35,7 @@ namespace Alura.Adopet.Console.Tests
 
             Assert.Throws<Exception>(() => str.RetornaPetString());
         }
+
         [Fact]
         [Trait("Pet", "Guid")]
         public void DeveRetornarExcecao_GuidInvalido()
@@ -43,6 +44,7 @@ namespace Alura.Adopet.Console.Tests
 
             Assert.Throws<FormatException>(() => linha.RetornaPetString());
         }
+
         [Fact]
         [Trait("Pet", "TipoPet")]
         public void DeveRetornarExcecao_CasoTipoPetInvalido()

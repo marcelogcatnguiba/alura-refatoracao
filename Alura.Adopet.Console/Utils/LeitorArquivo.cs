@@ -9,12 +9,13 @@ namespace Alura.Adopet.Console.Utils
             var listaDePet = new List<Pet>();
             using (StreamReader sr = new StreamReader(caminhoArquivoImportacao))
             {
-                while (!sr.EndOfStream)
+                bool fimDoArquivo = sr.EndOfStream;
+                while (fimDoArquivo is false)
                 {
                     // string[] propriedades = sr.ReadLine()!.Split(';');
                     // Pet pet = new Pet(Guid.Parse(propriedades[0]), propriedades[1], TipoPet.Cachorro);
 
-                    var pet = sr.ReadLine();
+                    string pet = sr.ReadLine()!;
                     listaDePet.Add(pet!.RetornaPetString());
                 }
             }
