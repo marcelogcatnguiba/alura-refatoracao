@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Threading.Tasks;
+using Alura.Adopet.Console.Validation;
 
 namespace Alura.Adopet.Console.Utils.Extensions
 {
@@ -12,26 +8,28 @@ namespace Alura.Adopet.Console.Utils.Extensions
         {
             return char.ToUpper(str[0]) + str.Substring(1);
         }
-        public static Pet RetornaPetString(this string str)
+        public static Pet RetornaPetString(this string petString)
         {
-            Guid guid;
-            TipoPet tipoPet;
 
-            if (string.IsNullOrEmpty(str))
-                throw new Exception("String vazia ou nula");
+            string[] petSeparado = petString.Split(";");
 
-            if (str.Split(";").Count() != 3)
-                throw new Exception("String invalida para converção");
+            PetStringException.Quando(string.IsNullOrEmpty(petString),
+                "String vazia ou nula");
 
-            if (Guid.TryParse(str.Split(";")[0], out guid) is false)
-                throw new FormatException("Guid invalido");
+            PetStringException.Quando(petSeparado.Count() != 3,
+                "String invalida para converção");
 
-            if (Enum.TryParse(str.Split(";")[2], out tipoPet) is false)
-                throw new FormatException("Tipo de pet invalido");
+            PetStringException.Quando(GuidValidation.IsNotGuid(petSeparado[0]),
+                "Guid invalido");
 
-            var nome = str.Split(";")[1];
+            PetStringException.Quando(EnumValidation.IsNotEnum(petSeparado[2]),
+                "Tipo de pet invalido");
 
-            return new Pet(guid, nome, tipoPet);
+            var petId = Guid.Parse(petSeparado[0]);
+            var petNome = petSeparado[1];
+            var petTipo = (TipoPet)Enum.Parse(typeof(TipoPet), petSeparado[2]);
+
+            return new Pet(petId, petNome, petTipo);
 
         }
     }

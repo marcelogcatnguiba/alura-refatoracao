@@ -19,10 +19,9 @@ namespace Alura.Adopet.Console.Utils
                 .Select(x => x.GetCustomAttribute<ClassDocuments>()!)
                 .ToDictionary(x => x.Comando);
 
-            if (_dic.ContainsKey(comando.ToLower()))
-                return _dic[comando].Descricao;
-            else
-                throw new Exception("Comando invalido");
+            if (_dic.ContainsKey(comando.ToLower())) return _dic[comando].Descricao;
+
+            throw new Exception("Comando invalido");
         }
     }
 }

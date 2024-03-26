@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.Utils.Extensions;
+using Alura.Adopet.Console.Validation;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Alura.Adopet.Console.Tests
@@ -23,7 +24,7 @@ namespace Alura.Adopet.Console.Tests
         {
             string linha = "456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;1;2";
 
-            Assert.Throws<Exception>(() => linha.RetornaPetString());
+            Assert.Throws<PetStringException>(() => linha.RetornaPetString());
         }
 
         [Fact]
@@ -33,7 +34,7 @@ namespace Alura.Adopet.Console.Tests
         {
             string str = "";
 
-            Assert.Throws<Exception>(() => str.RetornaPetString());
+            Assert.Throws<PetStringException>(() => str.RetornaPetString());
         }
 
         [Fact]
@@ -42,7 +43,7 @@ namespace Alura.Adopet.Console.Tests
         {
             string linha = "456b24f4-19e2-4423-84;Lima Limão;1";
 
-            Assert.Throws<FormatException>(() => linha.RetornaPetString());
+            Assert.Throws<PetStringException>(() => linha.RetornaPetString());
         }
 
         [Fact]
@@ -51,7 +52,7 @@ namespace Alura.Adopet.Console.Tests
         {
             string linha = "456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;a";
 
-            Assert.Throws<FormatException>(() => linha.RetornaPetString());
+            Assert.Throws<PetStringException>(() => linha.RetornaPetString());
         }
     }
 }

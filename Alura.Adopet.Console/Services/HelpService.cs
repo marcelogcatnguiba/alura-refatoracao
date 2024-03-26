@@ -14,8 +14,8 @@ namespace Alura.Adopet.Console.Services
         {
             if (args.Length == 1)
                 await AjudaComandos();
-            else
-                await AjudaComandoEspecifico(args[1]);
+
+            await AjudaComandoEspecifico(args[1]);
         }
         private Task AjudaComandos()
         {
