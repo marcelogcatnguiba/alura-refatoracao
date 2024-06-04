@@ -12,6 +12,7 @@ namespace Alura.Adopet.Console.Tests
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             Assert.Contains(comando, result);
         }
+
         [Fact]
         [Trait("Documentacao", "Import")]
         public void DeveRetornarDocumentacao_Import()
@@ -20,6 +21,7 @@ namespace Alura.Adopet.Console.Tests
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             Assert.Contains(comando, result);
         }
+
         [Fact]
         [Trait("Documentacao", "List")]
         public void DeveRetornarDocumentacao_List()
@@ -28,6 +30,7 @@ namespace Alura.Adopet.Console.Tests
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             Assert.Contains(comando, result);
         }
+        
         [Fact]
         [Trait("Documentacao", "Show")]
         public void DeveRetornarDocumentacao_Show()

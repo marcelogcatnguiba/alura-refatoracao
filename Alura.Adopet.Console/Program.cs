@@ -3,6 +3,7 @@ using Alura.Adopet.Console.Factory;
 using Alura.Adopet.Console.Utils.Extensions;
 
 Console.ForegroundColor = ConsoleColor.Green;
+
 try
 {
     var comando = args[0].Trim();
@@ -12,7 +13,6 @@ try
     var comandoSelect = selecionaComando.CriarComando(comandoEnum);
 
     await comandoSelect.ExecutarComando(args);
-
 }
 catch (Exception ex)
 {

@@ -1,4 +1,3 @@
-
 using Alura.Adopet.Console.Entities.Enums;
 using Alura.Adopet.Console.Services;
 

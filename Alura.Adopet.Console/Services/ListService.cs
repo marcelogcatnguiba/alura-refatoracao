@@ -20,6 +20,7 @@ namespace Alura.Adopet.Console.Services
         private async Task ListarPetsCadastrados()
         {
             var listPets = await _repository.ListPetsAsync();
+            
             foreach (var p in listPets!)
                 System.Console.WriteLine(p);
         }
