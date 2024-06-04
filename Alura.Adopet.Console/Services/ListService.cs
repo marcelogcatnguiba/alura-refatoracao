@@ -1,28 +1,31 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Utils;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Services
 {
     [ClassDocuments("list", "Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list")]
     public class ListService : IComando
     {
-        private readonly HttpClientPet _repository;
-        public ListService()
+        private readonly HttpClientPet _client;
+        public ListService(HttpClientPet client)
         {
-            _repository = new HttpClientPet();
+            _client = client;
         }
 
-        public async Task ExecutarComando(string[] args)
+        public async Task<Result> ExecutarComando(string[] args)
         {
-            await ListarPetsCadastrados();
+            return await ListarPetsCadastrados();
         }
 
-        private async Task ListarPetsCadastrados()
+        private async Task<Result> ListarPetsCadastrados()
         {
-            var listPets = await _repository.ListPetsAsync();
+            var listPets = await _client.ListPetsAsync();
             
             foreach (var p in listPets!)
                 System.Console.WriteLine(p);
+
+            return Result.Ok();
         }
     }
 }

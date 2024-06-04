@@ -1,7 +1,9 @@
+using FluentResults;
+
 namespace Alura.Adopet.Console.Services
 {
     public interface IComando
     {
-        public Task ExecutarComando(string[] args);
+        public Task<Result> ExecutarComando(string[] args);
     }
 }

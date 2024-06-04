@@ -5,12 +5,12 @@ namespace Alura.Adopet.Console.ConfigureHttp
     public class HttpClientPet
     {
         private readonly HttpClient _client;
-        public HttpClientPet(string uri = "http://localhost:5057")
+        public HttpClientPet(HttpClient client)
         {
-            _client = PetClientFactory.GetHttpClient(uri);
+            _client = client;
         }
 
-        public async Task<HttpResponseMessage> CreatePetAsync(Pet pet)
+        public virtual async Task<HttpResponseMessage> CreatePetAsync(Pet pet)
         {
             HttpResponseMessage? response = null;
             using (response = new HttpResponseMessage())

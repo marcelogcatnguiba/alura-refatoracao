@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Utils;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Services
 {
@@ -7,20 +8,21 @@ namespace Alura.Adopet.Console.Services
     public class ImportService : IComando
     {
         private readonly HttpClientPet _client;
-        public ImportService()
+        private readonly LeitorArquivo _leitorArquivo;
+        public ImportService(LeitorArquivo leitorArquivo, HttpClientPet httpClientPet)
         {
-            _client = new HttpClientPet();
+            _leitorArquivo = leitorArquivo;
+            _client = httpClientPet;
         }
 
-        public async Task ExecutarComando(string[] args)
+        public async Task<Result> ExecutarComando(string[] args)
         {
-            await ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
-
+            return await ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
         }
 
-        private async Task ImportarArquivoPets(string caminhoArquivoImportacao)
+        private async Task<Result> ImportarArquivoPets(string caminhoArquivoImportacao)
         {
-            var listaDePet = LeitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
+            var listaDePet = _leitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
 
             foreach (var pet in listaDePet)
             {
@@ -34,6 +36,8 @@ namespace Alura.Adopet.Console.Services
                 }
             }
             System.Console.WriteLine("Importação concluída!");
+
+            return Result.Ok();
         }
     }
 }

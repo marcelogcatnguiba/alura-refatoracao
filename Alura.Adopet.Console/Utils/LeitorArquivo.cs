@@ -2,12 +2,17 @@ using Alura.Adopet.Console.Utils.Extensions;
 
 namespace Alura.Adopet.Console.Utils
 {
-    public static class LeitorArquivo
+    public class LeitorArquivo
     {
-        public static IEnumerable<Pet> LeitorArquivoDePets(string caminhoArquivoImportacao)
+        private readonly string _caminhoArquivoImportacao;
+        public LeitorArquivo()
+        {
+            _caminhoArquivoImportacao = Configuration.CaminhoArquivoImportacao;
+        }
+        public virtual IEnumerable<Pet> LeitorArquivoDePets(string _caminhoArquivoImportacao)
         {
             var listaDePet = new List<Pet>();
-            using (StreamReader sr = new StreamReader(caminhoArquivoImportacao))
+            using (StreamReader sr = new StreamReader(_caminhoArquivoImportacao))
             {
                 bool naoFimArquivo = !sr.EndOfStream;
                 while (naoFimArquivo)
