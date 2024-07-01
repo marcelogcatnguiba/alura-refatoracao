@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Utils.Extensions;
 using Alura.Adopet.Console.Validation;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;

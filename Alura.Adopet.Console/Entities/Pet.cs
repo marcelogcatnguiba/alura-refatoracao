@@ -1,16 +1,11 @@
-﻿namespace Alura.Adopet.Console
+﻿namespace Alura.Adopet.Console.Entities
 {
-    public class Pet
+    public class Pet(Guid id, string? nome, TipoPet tipo)
     {
-        public Guid Id { get; set; }
-        public string? Nome { get; set; }
-        public TipoPet Tipo { get; set; }
-        public Pet(Guid id, string? nome, TipoPet tipo)
-        {
-            Id = id;
-            Nome = nome;
-            Tipo = tipo;
-        }
+        public Guid Id { get; set; } = id;
+        public string? Nome { get; set; } = nome;
+        public TipoPet Tipo { get; set; } = tipo;
+        
         public override string ToString()
         {
             return $"{Id} - {Nome} - {Tipo}";

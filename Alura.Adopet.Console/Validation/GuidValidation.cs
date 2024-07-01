@@ -4,8 +4,7 @@ namespace Alura.Adopet.Console.Utils.Extensions
     {
         public static bool IsNotGuid(string str)
         {
-            Guid x;
-            return !Guid.TryParse(str, out x);
+            return !Guid.TryParse(str, out Guid x);
         }
     }
 }

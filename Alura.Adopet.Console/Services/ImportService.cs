@@ -9,6 +9,7 @@ namespace Alura.Adopet.Console.Services
     {
         private readonly HttpClientPet _client;
         private readonly LeitorArquivo _leitorArquivo;
+        
         public ImportService(LeitorArquivo leitorArquivo, HttpClientPet httpClientPet)
         {
             _leitorArquivo = leitorArquivo;

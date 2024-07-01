@@ -9,30 +9,27 @@ namespace Alura.Adopet.Console.Factory
     {
         private readonly LeitorArquivo _leitorArquivo;
         private readonly HttpClientPet _clientPet;
+
         public SelecionaComandoFactory(LeitorArquivo leitorArquivo, HttpClientPet clientPet)
         {
             _leitorArquivo = leitorArquivo;
             _clientPet = clientPet;
         }
+        
         public override IComando CriarComando(TipoComando comando)
         {
-            switch (comando)
+            return comando switch
             {
-                case TipoComando.Help:
-                    return new HelpService();
+                TipoComando.Help => new HelpService(),
 
-                case TipoComando.Import:
-                    return new ImportService(_leitorArquivo, _clientPet);
+                TipoComando.Import => new ImportService(_leitorArquivo, _clientPet),
 
-                case TipoComando.List:
-                    return new ListService(_clientPet);
+                TipoComando.List => new ListService(_clientPet),
 
-                case TipoComando.Show:
-                    return new ShowService(_leitorArquivo);
-
-                default:
-                    throw new Exception("Comando Invalido");
-            }
+                TipoComando.Show => new ShowService(_leitorArquivo),
+                
+                _ => throw new Exception("Comando Invalido"),
+            };
         }
     }
 }

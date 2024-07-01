@@ -8,6 +8,7 @@ namespace Alura.Adopet.Console.Services
     public class ListService : IComando
     {
         private readonly HttpClientPet _client;
+        
         public ListService(HttpClientPet client)
         {
             _client = client;
