@@ -24,7 +24,7 @@ builder.Services.AddScoped<ClienteRepository>()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Adicionando servi�os.
+// //Adicionando servi�os.
 var serviceProvider = builder.Services.BuildServiceProvider();
 var eventoService = serviceProvider.GetService<IEventoService>();
 

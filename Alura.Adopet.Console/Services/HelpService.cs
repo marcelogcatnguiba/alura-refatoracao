@@ -24,6 +24,7 @@ namespace Alura.Adopet.Console.Services
             return Task.FromResult(Result.Ok());
 
         }
+        
         private Task<Result> AjudaComandoEspecifico(string comando)
         {
             System.Console.WriteLine(ListaDeDocumentacao.GetDocumentacao(comando));

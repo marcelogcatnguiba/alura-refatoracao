@@ -1,8 +1,8 @@
 ﻿namespace Alura.Adopet.Console
 {
-    public enum TipoPet : int
+    public enum TipoPet
     {
-        Gato = 0,
-        Cachorro = 1
+        Gato,
+        Cachorro
     }
 }

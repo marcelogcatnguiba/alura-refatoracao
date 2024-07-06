@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Validation;
 
 namespace Alura.Adopet.Console.Utils.Extensions
@@ -8,6 +9,7 @@ namespace Alura.Adopet.Console.Utils.Extensions
         {
             return char.ToUpper(str[0]) + str.Substring(1);
         }
+        
         public static Pet RetornaPetString(this string petString)
         {
 
