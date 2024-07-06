@@ -9,7 +9,8 @@ namespace Alura.Adopet.Console.Validation
 
         public static void Quando(bool esseErro, string message)
         {
-            if (esseErro) throw new PetStringException(message);
+            if (esseErro) 
+                throw new PetStringException(message);
         }
     }
 }

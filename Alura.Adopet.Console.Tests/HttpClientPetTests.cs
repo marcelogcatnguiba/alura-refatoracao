@@ -4,15 +4,15 @@ namespace Alura.Adopet.Console.Tests
 {
     public class HttpClientPetTests
     {
-        // [Fact]
-        // public async Task DeveRetornarListaPets_NaoVazia()
-        // {
-        //     var cliente = new HttpClientPet();
+        [Fact]
+        public async Task DeveRetornarListaPets_NaoVazia()
+        {
+            var cliente = new HttpClientPet(new PetClientFactory().CreateClient());
 
-        //     var lista = await cliente.ListPetsAsync();
+            var lista = await cliente.ListPetsAsync();
 
-        //     Assert.NotNull(lista);
-        // }
+            Assert.NotNull(lista);
+        }
 
         // [Fact]
         // [Trait("API", "Fora")]

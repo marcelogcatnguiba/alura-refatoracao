@@ -1,4 +1,3 @@
-using System.Net;
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Utils;

@@ -7,7 +7,7 @@ namespace Alura.Adopet.Console.ConfigureHttp
         private string _uri = Configuration.UrlAdoPet;
         public HttpClient CreateClient(string name)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = new ();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.BaseAddress = new Uri(_uri);

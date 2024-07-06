@@ -6,11 +6,6 @@ namespace Alura.Adopet.Console.Services
     [ClassDocuments("help", "Comando que exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
     public class HelpService : IComando
     {
-
-        public HelpService()
-        {
-
-        }
         public async Task<Result> ExecutarComando(string[] args)
         {
             if (args.Length == 1) return await AjudaComandos();
