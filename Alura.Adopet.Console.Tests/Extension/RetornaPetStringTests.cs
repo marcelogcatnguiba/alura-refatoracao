@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Utils.Extensions;
 using Alura.Adopet.Console.Validation;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
-namespace Alura.Adopet.Console.Tests
+namespace Alura.Adopet.Console.Tests.Extension
 {
 
     public class RetornaPetStringTests

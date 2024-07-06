@@ -4,7 +4,7 @@ using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Utils;
 using Moq;
 
-namespace Alura.Adopet.Console.Tests
+namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportCommandTestes
     {
