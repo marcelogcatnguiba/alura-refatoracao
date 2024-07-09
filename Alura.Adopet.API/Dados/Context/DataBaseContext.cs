@@ -11,7 +11,7 @@ namespace Alura.Adopet.API.Dados.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.LogTo(Console.WriteLine);
+            // optionsBuilder.LogTo(Console.WriteLine);
         }   
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pet> Pets { get; set; }

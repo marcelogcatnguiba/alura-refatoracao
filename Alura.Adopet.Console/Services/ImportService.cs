@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Utils;
 using FluentResults;
 
@@ -23,22 +24,26 @@ namespace Alura.Adopet.Console.Services
 
         private async Task<Result> ImportarArquivoPets(string caminhoArquivoImportacao)
         {
-            var listaDePet = _leitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
-
-            foreach (var pet in listaDePet)
+            try
             {
-                try
+                var listaDePet = _leitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
+
+                foreach (var pet in listaDePet)
                 {
                     var resposta = await _client.CreatePetAsync(pet);
                 }
-                catch (Exception ex)
-                {
-                    System.Console.WriteLine(ex.Message);
-                }
-            }
-            System.Console.WriteLine("Importação concluída!");
 
-            return Result.Ok();
+                return Result.Ok().WithSuccess(new SuccessImport(listaDePet));
+            }
+            catch(NullReferenceException ex)
+            {
+                return Result.Fail(new Error("A lista de pets é nula").CausedBy(ex));
+            }
+            catch(Exception ex)
+            {
+                return Result.Fail(new Error("Importacao falhou !!").CausedBy(ex));
+            }
+            
         }
     }
 }

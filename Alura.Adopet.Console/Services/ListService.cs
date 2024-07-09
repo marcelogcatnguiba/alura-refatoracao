@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Utils;
 using FluentResults;
 
@@ -21,12 +22,15 @@ namespace Alura.Adopet.Console.Services
 
         private async Task<Result> ListarPetsCadastrados()
         {
-            var listPets = await _client.ListPetsAsync();
-            
-            foreach (var p in listPets!)
-                System.Console.WriteLine(p);
-
-            return Result.Ok();
+            try
+            {
+                var listPets = await _client.ListPetsAsync();
+                return Result.Ok().WithSuccess(new SuccessList(listPets!));
+            }
+            catch(Exception ex)
+            {
+                return Result.Fail(new Error("Erro ao listar pets").CausedBy(ex));
+            }
         }
     }
 }

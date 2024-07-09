@@ -7,11 +7,10 @@ namespace Alura.Adopet.Console.Utils
     {
         public virtual IEnumerable<Pet> LeitorArquivoDePets(string _caminhoArquivoImportacao)
         {
-            List<Pet> listaDePet = new();
-            using (StreamReader sr = new StreamReader(_caminhoArquivoImportacao))
+            List<Pet> listaDePet = [];
+            using (StreamReader sr = new (_caminhoArquivoImportacao))
             {
-                bool naoFimArquivo = !sr.EndOfStream;
-                while (naoFimArquivo)
+                while (!sr.EndOfStream)
                 {
                     string pet = sr.ReadLine()!;
                     listaDePet.Add(pet!.RetornaPetString());

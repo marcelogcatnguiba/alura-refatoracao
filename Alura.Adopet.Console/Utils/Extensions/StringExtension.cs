@@ -18,7 +18,7 @@ namespace Alura.Adopet.Console.Utils.Extensions
             PetStringException.Quando(string.IsNullOrEmpty(petString),
                 "String vazia ou nula");
 
-            PetStringException.Quando(petSeparado.Count() != 3,
+            PetStringException.Quando(petSeparado.Length != 3,
                 "String invalida para converção");
 
             PetStringException.Quando(GuidValidation.IsNotGuid(petSeparado[0]),
