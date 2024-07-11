@@ -5,7 +5,7 @@ using FluentResults;
 namespace Alura.Adopet.Console.Services
 {
     [ClassDocuments("help", "Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
-    public class HelpService(string? comando) : IComando
+    public class HelpService(string? comando = null) : IComando
     {
         private readonly string? _comando = comando;
 
