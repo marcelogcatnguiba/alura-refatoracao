@@ -1,6 +1,6 @@
 using FluentResults;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Services.Interfaces
 {
     public interface IComando
     {

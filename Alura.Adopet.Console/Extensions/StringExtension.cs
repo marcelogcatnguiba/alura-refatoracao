@@ -1,8 +1,9 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
+using Alura.Adopet.Console.Utils.Extensions;
 using Alura.Adopet.Console.Validation;
 
-namespace Alura.Adopet.Console.Utils.Extensions
+namespace Alura.Adopet.Console.Extensions
 {
     public static class StringExtension
     {

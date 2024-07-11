@@ -2,6 +2,7 @@ using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Documentation;
 using FluentResults;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Services.Interfaces;
 
 namespace Alura.Adopet.Console.Services
 {

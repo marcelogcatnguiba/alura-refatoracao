@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Documentation;
 
-namespace Alura.Adopet.Console.Tests.Extension
+namespace Alura.Adopet.Console.Tests.Documentation
 {
     public class ListaDeDocumentacaoTests
     {

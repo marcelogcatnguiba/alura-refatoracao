@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
-using Alura.Adopet.Console.Utils.Extensions;
+using Alura.Adopet.Console.Extensions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Alura.Adopet.Console.Tests.Extension

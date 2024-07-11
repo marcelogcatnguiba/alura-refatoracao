@@ -1,5 +1,5 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Utils.Extensions;
+using Alura.Adopet.Console.Extensions;
 
 namespace Alura.Adopet.Console.Readers
 {

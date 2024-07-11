@@ -2,7 +2,7 @@ using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities.Enums;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Services;
-using Alura.Adopet.Console.Utils;
+using Alura.Adopet.Console.Services.Interfaces;
 
 namespace Alura.Adopet.Console.Factory
 {
