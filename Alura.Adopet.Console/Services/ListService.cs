@@ -15,7 +15,7 @@ namespace Alura.Adopet.Console.Services
             _client = client;
         }
 
-        public async Task<Result> ExecutarComando(string[] args)
+        public async Task<Result> ExecutarComando()
         {
             return await ListarPetsCadastrados();
         }

@@ -5,21 +5,24 @@ using FluentResults;
 namespace Alura.Adopet.Console.Services
 {
     [ClassDocuments("help", "Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
-    public class HelpService : IComando
+    public class HelpService(string? comando) : IComando
     {
-        public async Task<Result> ExecutarComando(string[] args)
+        private readonly string? _comando = comando;
+
+        public async Task<Result> ExecutarComando()
         {
-            if (args.Length == 1) 
+            if (_comando is null) 
                 return await AjudaComandos();
 
-            return await AjudaComandoEspecifico(args[1]);
+            return await AjudaComandoEspecifico(_comando);
         }
-        private Task<Result> AjudaComandos()
+        
+        private static Task<Result> AjudaComandos()
         {
             return Task.FromResult(Result.Ok().WithSuccess(new SuccessHelp()));
         }
         
-        private Task<Result> AjudaComandoEspecifico(string comando)
+        private static Task<Result> AjudaComandoEspecifico(string comando)
         {
             var comandoInformacao = ListaDeDocumentacao.GetDocumentacao(comando);
             return Task.FromResult(Result.Ok().WithSuccess(new SuccessHelp(comandoInformacao)));

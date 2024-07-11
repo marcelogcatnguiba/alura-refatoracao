@@ -6,7 +6,7 @@ namespace Alura.Adopet.Console.Utils
     {
         public static string GetDocumentacao(string comando)
         {
-            Dictionary<string, ClassDocuments> _dic = new Dictionary<string, ClassDocuments>();
+            Dictionary<string, ClassDocuments> _dic = [];
 
             _dic = Assembly
                 .GetExecutingAssembly()

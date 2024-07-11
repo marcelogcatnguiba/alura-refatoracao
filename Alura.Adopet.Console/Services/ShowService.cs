@@ -14,12 +14,12 @@ namespace Alura.Adopet.Console.Services
             _leitorDeArquivo = leitorArquivo;
         }
         
-        public async Task<Result> ExecutarComando(string[] args)
+        public async Task<Result> ExecutarComando()
         {
-            return await ListarPetsDeArquivo(caminhoDoArquivo: args[1]);
+            return await ListarPetsDeArquivo();
         }
 
-        public Task<Result> ListarPetsDeArquivo(string caminhoDoArquivo)
+        public Task<Result> ListarPetsDeArquivo()
         {
             try
             {

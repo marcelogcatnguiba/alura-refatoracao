@@ -7,14 +7,15 @@ using Alura.Adopet.Console.Utils;
 using Alura.Adopet.Console.Utils.Extensions;
 
 var comando = args[0].Trim();
+var helpComando = args.Length > 1 ? args[1] : null;
 
 LeitorArquivo leitorArquivo = new(Configuration.CaminhoArquivoImportacao);
 HttpClientPet httpClientPet = new(new PetClientFactory().CreateClient("adopet"));
 
-SelecionaComandoFactory selecionaComando = new(leitorArquivo, httpClientPet);
+SelecionaComandoFactory selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
 var comandoEnum = (TipoComando)Enum.Parse(typeof(TipoComando), comando.PrimeiraLetraMaiuscula());
 var comandoSelect = selecionaComando.CriarComando(comandoEnum);
 
-var result = await comandoSelect.ExecutarComando(args);
+var result = await comandoSelect.ExecutarComando();
 
 ConsoleUI.ExibeResultado(result);

@@ -27,9 +27,8 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
             ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
-            string[] args = ["import", "lista.csv"];
-
-            var result = await importacao.ExecutarComando(args);
+            
+            var result = await importacao.ExecutarComando();
 
             Assert.True(result.IsSuccess);
         }
@@ -43,9 +42,8 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
             ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
-            string[] args = ["import", "lista.csv"];
-
-            var result = await importacao.ExecutarComando(args);
+            
+            var result = await importacao.ExecutarComando();
             var pet = (SuccessImport)result.Successes.First();
 
             Assert.Equal("Lima", pet.Pets.First().Nome);

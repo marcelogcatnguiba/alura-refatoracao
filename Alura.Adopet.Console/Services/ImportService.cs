@@ -17,12 +17,12 @@ namespace Alura.Adopet.Console.Services
             _client = httpClientPet;
         }
 
-        public async Task<Result> ExecutarComando(string[] args)
+        public async Task<Result> ExecutarComando()
         {
-            return await ImportarArquivoPets(caminhoArquivoImportacao: args[1]);
+            return await ImportarArquivoPets();
         }
 
-        private async Task<Result> ImportarArquivoPets(string caminhoArquivoImportacao)
+        private async Task<Result> ImportarArquivoPets()
         {
             try
             {

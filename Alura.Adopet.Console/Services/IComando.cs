@@ -4,6 +4,6 @@ namespace Alura.Adopet.Console.Services
 {
     public interface IComando
     {
-        public Task<Result> ExecutarComando(string[] args);
+        public Task<Result> ExecutarComando();
     }
 }
