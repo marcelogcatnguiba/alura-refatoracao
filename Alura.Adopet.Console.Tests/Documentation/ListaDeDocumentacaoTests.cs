@@ -1,4 +1,6 @@
 using Alura.Adopet.Console.Documentation;
+using Alura.Adopet.Console.Exeptions;
+using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Documentation
 {
@@ -10,7 +12,10 @@ namespace Alura.Adopet.Console.Tests.Documentation
         {
             var comando = "help";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
-            Assert.Contains(comando, result);
+
+            result
+                .Should()
+                .Be("Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help");
         }
 
         [Fact]
@@ -19,7 +24,10 @@ namespace Alura.Adopet.Console.Tests.Documentation
         {
             var comando = "import";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
-            Assert.Contains(comando, result);
+            
+            result
+                .Should()
+                .Be("Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>");
         }
 
         [Fact]
@@ -28,7 +36,10 @@ namespace Alura.Adopet.Console.Tests.Documentation
         {
             var comando = "list";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
-            Assert.Contains(comando, result);
+            
+            result
+                .Should()
+                .Be("Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list");
         }
         
         [Fact]
@@ -37,7 +48,22 @@ namespace Alura.Adopet.Console.Tests.Documentation
         {
             var comando = "show";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
-            Assert.Contains(comando, result);
+            
+            result
+                .Should()
+                .Be("Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.");
+        }
+
+        [Fact]
+        public void DeveRetornarErro_QuandoNaoExistirDocumentacao()
+        {
+            var comando = "qualquer";
+            Action action = () => ListaDeDocumentacao.GetDocumentacao(comando);
+
+            action
+                .Should()
+                .Throw<DocumentationException>()
+                .WithMessage($"O comando {comando} não existe na lista de comandos");
         }
     }
 }

@@ -9,12 +9,11 @@ namespace Alura.Adopet.Console.Extensions
     {
         public static string PrimeiraLetraMaiuscula(this string str)
         {
-            return char.ToUpper(str[0]) + str.Substring(1);
+            return char.ToUpper(str[0]) + str[1..];
         }
         
         public static Pet RetornaPetString(this string petString)
         {
-
             string[] petSeparado = petString.Split(";");
 
             PetStringException.Quando(string.IsNullOrEmpty(petString),
