@@ -1,4 +1,4 @@
-namespace Alura.Adopet.Console.Utils
+namespace Alura.Adopet.Console.Documentation
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ClassDocuments : Attribute

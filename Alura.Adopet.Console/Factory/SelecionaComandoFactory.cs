@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities.Enums;
+using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Utils;
 
@@ -7,11 +8,11 @@ namespace Alura.Adopet.Console.Factory
 {
     public class SelecionaComandoFactory : ComandoFactory
     {
-        private readonly LeitorArquivo _leitorArquivo;
+        private readonly LeitorCSV _leitorArquivo;
         private readonly HttpClientPet _clientPet;
         private readonly string? _comando;
 
-        public SelecionaComandoFactory(LeitorArquivo leitorArquivo, HttpClientPet clientPet, string? comando = null)
+        public SelecionaComandoFactory(LeitorCSV leitorArquivo, HttpClientPet clientPet, string? comando = null)
         {
             _leitorArquivo = leitorArquivo;
             _clientPet = clientPet;

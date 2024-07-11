@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Alura.Adopet.Console.Utils
+namespace Alura.Adopet.Console.Documentation
 {
     public static class ListaDeDocumentacao
     {

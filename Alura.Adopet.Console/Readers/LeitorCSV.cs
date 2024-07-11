@@ -1,9 +1,9 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Utils.Extensions;
 
-namespace Alura.Adopet.Console.Utils
+namespace Alura.Adopet.Console.Readers
 {
-    public class LeitorArquivo(string caminhoDoArquivo)
+    public class LeitorCSV(string caminhoDoArquivo)
     {
         private readonly string _caminhoDoArquivo = caminhoDoArquivo;
         

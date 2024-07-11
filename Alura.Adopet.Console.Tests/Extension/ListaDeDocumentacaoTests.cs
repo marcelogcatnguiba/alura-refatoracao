@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.Utils;
+using Alura.Adopet.Console.Documentation;
 
 namespace Alura.Adopet.Console.Tests.Extension
 {

@@ -1,20 +1,20 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
+using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.SuccessResult;
-using Alura.Adopet.Console.Utils;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportSericeTest
     {
-        private readonly Mock<LeitorArquivo> _leitorArquivo;
+        private readonly Mock<LeitorCSV> _leitorArquivo;
         private readonly Mock<HttpClientPet> _clientPet;
 
         public ImportSericeTest()
         {
-            _leitorArquivo = new Mock<LeitorArquivo>(Configuration.CaminhoArquivoImportacao);
+            _leitorArquivo = new Mock<LeitorCSV>(Configuration.CaminhoArquivoImportacao);
             _clientPet = new Mock<HttpClientPet>(new PetClientFactory().CreateClient());
         }
 

@@ -1,4 +1,4 @@
-namespace Alura.Adopet.Console.Validation
+namespace Alura.Adopet.Console.Exeptions
 {
     public class PetStringException : Exception
     {

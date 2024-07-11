@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.SuccessResult;
-using Alura.Adopet.Console.Utils;
 using FluentResults;
 
 namespace Alura.Adopet.Console.Services

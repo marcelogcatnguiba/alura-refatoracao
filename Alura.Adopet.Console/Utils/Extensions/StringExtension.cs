@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.Entities;
+using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Validation;
 
 namespace Alura.Adopet.Console.Utils.Extensions
