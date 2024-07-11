@@ -3,12 +3,14 @@ using Alura.Adopet.Console.Utils.Extensions;
 
 namespace Alura.Adopet.Console.Utils
 {
-    public class LeitorArquivo
+    public class LeitorArquivo(string caminhoDoArquivo)
     {
-        public virtual IEnumerable<Pet> LeitorArquivoDePets(string _caminhoArquivoImportacao)
+        private readonly string _caminhoDoArquivo = caminhoDoArquivo;
+        
+        public virtual IEnumerable<Pet> RealizarLeitura()
         {
             List<Pet> listaDePet = [];
-            using (StreamReader sr = new (_caminhoArquivoImportacao))
+            using (StreamReader sr = new (_caminhoDoArquivo))
             {
                 while (!sr.EndOfStream)
                 {

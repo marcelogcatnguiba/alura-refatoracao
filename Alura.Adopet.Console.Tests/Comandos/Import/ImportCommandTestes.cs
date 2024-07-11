@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Utils;
 using Moq;
 
@@ -8,29 +9,46 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportCommandTestes
     {
-        [Fact]
-        public async void QuandoPetEstiverNoArquivoDeveSerImportado()
+        private readonly Mock<LeitorArquivo> _leitorArquivo;
+        private readonly Mock<HttpClientPet> _clientPet;
+
+        public ImportCommandTestes()
         {
-            // Given
-            List<Pet> listaPets = [new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)];
+            _leitorArquivo = new Mock<LeitorArquivo>(Configuration.CaminhoArquivoImportacao);
+            _clientPet = new Mock<HttpClientPet>(new PetClientFactory().CreateClient());
+        }
+
+        [Fact]
+        public async Task QuandoPetEstiverNoArquivoDeveSerImportado()
+        {
+            List<Pet> listaPets = [ new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro) ];
             
-            var leitorArquivo = new Mock<LeitorArquivo>();
-            var httpClientPet = new Mock<HttpClientPet>(new PetClientFactory().CreateClient());
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(listaPets);
+            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
-            leitorArquivo.Setup(x => 
-                x.LeitorArquivoDePets(It.IsAny<string>())).Returns(listaPets);
-
-            httpClientPet.Setup(x => 
-                x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
-
-            var importacao = new ImportService(leitorArquivo.Object, httpClientPet.Object);
+            ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
             string[] args = ["import", "lista.csv"];
 
-            // When
             var result = await importacao.ExecutarComando(args);
 
-            // Then
             Assert.True(result.IsSuccess);
+        }
+
+        [Fact]
+        public async Task DeveSerImportadoPet()
+        {
+            List<Pet> listaPets = [ new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro) ];
+            
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(listaPets);
+            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
+
+            ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            string[] args = ["import", "lista.csv"];
+
+            var result = await importacao.ExecutarComando(args);
+            var pet = (SuccessImport)result.Successes.First();
+
+            Assert.Equal("Lima", pet.Pets.First().Nome);
         }
     }
 }

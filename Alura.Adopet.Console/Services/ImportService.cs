@@ -26,7 +26,7 @@ namespace Alura.Adopet.Console.Services
         {
             try
             {
-                var listaDePet = _leitorArquivo.LeitorArquivoDePets(caminhoArquivoImportacao);
+                var listaDePet = _leitorArquivo.RealizarLeitura();
 
                 foreach (var pet in listaDePet)
                 {
