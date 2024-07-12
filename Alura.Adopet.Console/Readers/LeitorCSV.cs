@@ -1,14 +1,16 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Extensions;
+using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Readers.Result;
 
 namespace Alura.Adopet.Console.Readers
 {
-    public class LeitorCSV(string caminhoDoArquivo)
+    public class LeitorCSV(string caminhoDoArquivo) : ILeitor
     {
         private readonly string _caminhoDoArquivo = caminhoDoArquivo;
         
-        public virtual IEnumerable<Pet> RealizarLeitura()
+        public virtual ResultReader RealizarLeitura()
         {
             LeitorArquivosException
                 .Quando(ArquivoNaoCSV(), "Formato de arquivo invalido");
@@ -16,14 +18,19 @@ namespace Alura.Adopet.Console.Readers
             List<Pet> listaDePet = [];
             using (StreamReader sr = new (_caminhoDoArquivo))
             {
-                while (!sr.EndOfStream)
+                while(!sr.EndOfStream)
                 {
                     string pet = sr.ReadLine()!;
                     listaDePet.Add(pet!.RetornaPetString());
                 }
             }
 
-            return listaDePet;
+            var result = new ResultReader
+            {
+                Pets = listaDePet
+            };
+
+            return result;
         }
 
         private bool ArquivoNaoCSV()
