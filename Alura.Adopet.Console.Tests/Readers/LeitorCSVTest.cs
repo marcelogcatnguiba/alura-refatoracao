@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Readers;
 using FluentAssertions;
+using Moq;
 
 namespace Alura.Adopet.Console.Tests.Readers
 {
@@ -14,6 +15,12 @@ namespace Alura.Adopet.Console.Tests.Readers
             Action act = () => leitor.RealizarLeitura();
 
             act.Should().Throw<LeitorArquivosException>().WithMessage("Formato de arquivo invalido");
+        }
+
+        [Fact]
+        public void DeveRetornarListaPets_QuandoRealizarLeitura()
+        {
+            
         }
     }
 }

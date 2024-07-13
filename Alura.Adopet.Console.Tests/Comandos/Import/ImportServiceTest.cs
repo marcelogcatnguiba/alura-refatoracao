@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.SuccessResult;
 using Moq;
@@ -21,9 +22,15 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         [Fact]
         public async Task QuandoPetEstiverNoArquivoDeveSerImportado()
         {
-            List<Pet> listaPets = [ new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro) ];
+            ResultReader resultReader = new()
+            {
+                Pets = 
+                [
+                    new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
+                ]
+            };
             
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(listaPets);
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
             ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
@@ -36,9 +43,15 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         [Fact]
         public async Task DeveSerImportadoPet()
         {
-            List<Pet> listaPets = [ new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro) ];
+            ResultReader resultReader = new()
+            {
+                Pets = 
+                [
+                    new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
+                ]
+            };
             
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(listaPets);
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
             ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);

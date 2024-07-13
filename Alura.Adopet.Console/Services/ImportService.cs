@@ -30,12 +30,12 @@ namespace Alura.Adopet.Console.Services
             {
                 var listaDePet = _leitorArquivo.RealizarLeitura();
 
-                foreach (var pet in listaDePet)
+                foreach (var pet in listaDePet.Pets)
                 {
                     var resposta = await _client.CreatePetAsync(pet);
                 }
 
-                return Result.Ok().WithSuccess(new SuccessImport(listaDePet));
+                return Result.Ok().WithSuccess(new SuccessImport(listaDePet.Pets));
             }
             catch(NullReferenceException ex)
             {

@@ -26,7 +26,7 @@ namespace Alura.Adopet.Console.Services
             try
             {
                 var listaDePet = _leitorDeArquivo.RealizarLeitura();
-                return Task.FromResult(Result.Ok().WithSuccess(new SuccessShow(listaDePet)));
+                return Task.FromResult(Result.Ok().WithSuccess(new SuccessShow(listaDePet.Pets)));
             }
             catch(Exception e)
             {

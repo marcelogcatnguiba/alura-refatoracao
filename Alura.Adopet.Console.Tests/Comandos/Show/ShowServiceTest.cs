@@ -1,5 +1,5 @@
-using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
@@ -12,15 +12,18 @@ namespace Alura.Adopet.Console.Tests.Comandos.Show
         [Fact]
         public async Task DeveConterPetsNaLista()
         {
-            List<Pet> listaPets = 
-            [
-                new(Guid.NewGuid(), "Luna", TipoPet.Gato),
-                new(Guid.NewGuid(), "Mira", TipoPet.Cachorro),
-                new(Guid.NewGuid(), "Kira", TipoPet.Gato)
-            ];
+            ResultReader resultReader = new()
+            {
+                Pets = 
+                [
+                    new(Guid.NewGuid(), "Luna", TipoPet.Gato),
+                    new(Guid.NewGuid(), "Mira", TipoPet.Cachorro),
+                    new(Guid.NewGuid(), "Kira", TipoPet.Gato)
+                ]
+            };
             
             Mock<LeitorCSV> leitor = new(Configuration.CaminhoArquivoImportacao);
-            leitor.Setup(x => x.RealizarLeitura()).Returns(listaPets);
+            leitor.Setup(x => x.RealizarLeitura()).Returns(resultReader);
 
             ShowService show = new(leitor.Object);
             var success = await show.ExecutarComando();
