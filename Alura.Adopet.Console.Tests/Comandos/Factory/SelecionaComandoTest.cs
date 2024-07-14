@@ -1,14 +1,13 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Factory;
 using Alura.Adopet.Console.Readers.Interfaces;
-using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Comandos;
 using FluentAssertions;
-using FluentAssertions.Specialized;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Factory
 {
-    public class SelecionaComandoFactoryTest
+    public class SelecionaComandoTest
     {
         [Fact]
         public void DeveRetornarComando_Import()
@@ -16,10 +15,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             Mock<ILeitor> leitor = new();
             Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
 
-            var factory = new SelecionaComandoFactory(leitor.Object, client.Object);
+            var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("import");
 
-            result.Should().BeOfType<ImportService>();
+            result.Should().BeOfType<ImportComando>();
         }
 
         [Fact]
@@ -28,10 +27,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             Mock<ILeitor> leitor = new();
             Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
 
-            var factory = new SelecionaComandoFactory(leitor.Object, client.Object);
+            var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("help");
 
-            result.Should().BeOfType<HelpService>();
+            result.Should().BeOfType<HelpComando>();
         }
 
         [Fact]
@@ -40,10 +39,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             Mock<ILeitor> leitor = new();
             Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
 
-            var factory = new SelecionaComandoFactory(leitor.Object, client.Object);
+            var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("show");
 
-            result.Should().BeOfType<ShowService>();
+            result.Should().BeOfType<ShowComando>();
         }
 
         [Fact]
@@ -52,10 +51,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             Mock<ILeitor> leitor = new();
             Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
 
-            var factory = new SelecionaComandoFactory(leitor.Object, client.Object);
+            var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("list");
 
-            result.Should().BeOfType<ListService>();
+            result.Should().BeOfType<ListComando>();
         }
 
         [Fact]
@@ -64,7 +63,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             Mock<ILeitor> leitor = new();
             Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
 
-            var factory = new SelecionaComandoFactory(leitor.Object, client.Object);
+            var factory = new SelecionaComando(leitor.Object, client.Object);
             Action action = () => factory.CriarComando("invalido");
 
             action.Should().Throw<Exception>().WithMessage("Comando invalido invalido");

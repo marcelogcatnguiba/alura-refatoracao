@@ -1,13 +1,13 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.List
 {
-    public class ListServiceTest
+    public class ListComandoTest
     {
         [Fact]
         public async Task DeveConterPetsNaLista()
@@ -22,7 +22,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.List
             Mock<HttpClientPet> clientMock = new(new PetClientFactory().CreateClient());
             clientMock.Setup(x => x.ListPetsAsync()).ReturnsAsync(listaPets);
 
-            ListService service = new(clientMock.Object);
+            ListComando service = new(clientMock.Object);
             
             var success = await service.ExecutarComando();
             var result = (SuccessList)success.Successes.First();

@@ -1,12 +1,12 @@
 using Alura.Adopet.Console.Documentation;
-using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Comandos
 {
     [ClassDocuments("help", "Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
-    public class HelpService(string? comando = null) : IComando
+    public class HelpComando(string? comando = null) : IComando
     {
         private readonly string? _comando = comando;
 

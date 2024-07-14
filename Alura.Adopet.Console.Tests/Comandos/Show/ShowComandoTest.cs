@@ -1,13 +1,13 @@
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Result;
-using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Show
 {
-    public class ShowServiceTest
+    public class ShowComandoTest
     {
         [Fact]
         public async Task DeveConterPetsNaLista()
@@ -25,7 +25,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Show
             Mock<LeitorCSV> leitor = new(Configuration.CaminhoArquivoImportacao);
             leitor.Setup(x => x.RealizarLeitura()).Returns(resultReader);
 
-            ShowService show = new(leitor.Object);
+            ShowComando show = new(leitor.Object);
             var success = await show.ExecutarComando();
             var result = (SuccessShow)success.Successes.First();
 

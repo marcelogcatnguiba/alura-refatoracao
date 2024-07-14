@@ -2,18 +2,18 @@ using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Result;
-using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
-    public class ImportSericeTest
+    public class ImportComandoTest
     {
         private readonly Mock<LeitorCSV> _leitorArquivo;
         private readonly Mock<HttpClientPet> _clientPet;
 
-        public ImportSericeTest()
+        public ImportComandoTest()
         {
             _leitorArquivo = new Mock<LeitorCSV>(Configuration.CaminhoArquivoImportacao);
             _clientPet = new Mock<HttpClientPet>(new PetClientFactory().CreateClient());
@@ -33,7 +33,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
-            ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
 
@@ -54,7 +54,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
 
-            ImportService importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
             var pet = (SuccessImport)result.Successes.First();

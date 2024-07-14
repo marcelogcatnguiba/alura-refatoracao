@@ -1,6 +1,6 @@
-namespace Alura.Adopet.Console.Validation
+namespace Alura.Adopet.Console.Extensions
 {
-    public static class EnumValidation
+    public static class EnumExtension
     {
         public static bool IsNotEnum(string petString)
         {

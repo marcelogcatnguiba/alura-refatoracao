@@ -2,18 +2,18 @@ using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities.Enums;
 using Alura.Adopet.Console.Extensions;
 using Alura.Adopet.Console.Readers.Interfaces;
-using Alura.Adopet.Console.Services;
-using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Comandos;
+using Alura.Adopet.Console.Comandos.Interfaces;
 
 namespace Alura.Adopet.Console.Factory
 {
-    public class SelecionaComandoFactory : ComandoFactory
+    public class SelecionaComando : ComandoFactory
     {
         private readonly ILeitor _leitorArquivo;
         private readonly HttpClientPet _clientPet;
         private readonly string? _comando;
 
-        public SelecionaComandoFactory(ILeitor leitorArquivo, HttpClientPet clientPet, string? comando = null)
+        public SelecionaComando(ILeitor leitorArquivo, HttpClientPet clientPet, string? comando = null)
         {
             _leitorArquivo = leitorArquivo;
             _clientPet = clientPet;
@@ -26,13 +26,13 @@ namespace Alura.Adopet.Console.Factory
 
             return comandoEnum switch
             {
-                TipoComando.Help => new HelpService(_comando),
+                TipoComando.Help => new HelpComando(_comando),
 
-                TipoComando.Import => new ImportService(_leitorArquivo, _clientPet),
+                TipoComando.Import => new ImportComando(_leitorArquivo, _clientPet),
 
-                TipoComando.List => new ListService(_clientPet),
+                TipoComando.List => new ListComando(_clientPet),
 
-                TipoComando.Show => new ShowService(_leitorArquivo),
+                TipoComando.Show => new ShowComando(_leitorArquivo),
                 
                 _ => throw new Exception($"Falha fabrica de comandos"),
             };

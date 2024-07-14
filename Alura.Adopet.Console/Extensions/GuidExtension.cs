@@ -1,6 +1,6 @@
-namespace Alura.Adopet.Console.Utils.Extensions
+namespace Alura.Adopet.Console.Extensions
 {
-    public static class GuidValidation
+    public static class GuidExtension
     {
         public static bool IsNotGuid(string str)
         {

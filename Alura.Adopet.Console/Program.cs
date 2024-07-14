@@ -10,7 +10,7 @@ var helpComando = args.Length > 1 ? args[1] : null;
 LeitorCSV leitorArquivo = new(Configuration.CaminhoArquivoImportacao);
 HttpClientPet httpClientPet = new(new PetClientFactory().CreateClient("adopet"));
 
-SelecionaComandoFactory selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
+SelecionaComando selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
 var comandoSelect = selecionaComando.CriarComando(comando);
 
 var result = await comandoSelect.ExecutarComando();

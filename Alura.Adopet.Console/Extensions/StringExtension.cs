@@ -1,7 +1,5 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
-using Alura.Adopet.Console.Utils.Extensions;
-using Alura.Adopet.Console.Validation;
 
 namespace Alura.Adopet.Console.Extensions
 {
@@ -22,10 +20,10 @@ namespace Alura.Adopet.Console.Extensions
             PetStringException.Quando(petSeparado.Length != 3,
                 "String invalida para converção");
 
-            PetStringException.Quando(GuidValidation.IsNotGuid(petSeparado[0]),
+            PetStringException.Quando(GuidExtension.IsNotGuid(petSeparado[0]),
                 "Guid invalido");
 
-            PetStringException.Quando(EnumValidation.IsNotEnum(petSeparado[2]),
+            PetStringException.Quando(EnumExtension.IsNotEnum(petSeparado[2]),
                 "Tipo de pet invalido");
 
             var petId = Guid.Parse(petSeparado[0]);

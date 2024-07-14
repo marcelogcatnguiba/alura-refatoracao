@@ -1,20 +1,19 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Documentation;
-using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Interfaces;
-using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Comandos
 {
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
-    public class ImportService : IComando
+    public class ImportComando : IComando
     {
         private readonly HttpClientPet _client;
         private readonly ILeitor _leitorArquivo;
         
-        public ImportService(ILeitor leitorArquivo, HttpClientPet httpClientPet)
+        public ImportComando(ILeitor leitorArquivo, HttpClientPet httpClientPet)
         {
             _leitorArquivo = leitorArquivo;
             _client = httpClientPet;

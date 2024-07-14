@@ -1,15 +1,15 @@
-using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Help
 {
-    public class HelpServiceTest
+    public class HelpComandoTest
     {
         [Fact]
         public async Task DeveMostrarDocumentacaoTotal_QuandoComandoNull()
         {
-            HelpService help = new();
+            HelpComando help = new();
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -20,7 +20,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Help()
         {
-            HelpService help = new("help");
+            HelpComando help = new("help");
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -33,7 +33,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Import()
         {
-            HelpService help = new("import");
+            HelpComando help = new("import");
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -46,7 +46,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_List()
         {
-            HelpService help = new("list");
+            HelpComando help = new("list");
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -59,7 +59,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Show()
         {
-            HelpService help = new("show");
+            HelpComando help = new("show");
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();

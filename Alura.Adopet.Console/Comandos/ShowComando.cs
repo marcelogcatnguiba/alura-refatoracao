@@ -1,18 +1,17 @@
 using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Documentation;
 using FluentResults;
-using Alura.Adopet.Console.Readers;
-using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.Readers.Interfaces;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Comandos
 {
     [ClassDocuments("show", "Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.")]
-    public class ShowService : IComando
+    public class ShowComando : IComando
     {
         private readonly ILeitor _leitorDeArquivo;
 
-        public ShowService(ILeitor leitorArquivo)
+        public ShowComando(ILeitor leitorArquivo)
         {
             _leitorDeArquivo = leitorArquivo;
         }

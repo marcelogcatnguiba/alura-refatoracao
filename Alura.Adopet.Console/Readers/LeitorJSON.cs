@@ -25,9 +25,9 @@ namespace Alura.Adopet.Console.Readers
 
                 return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw new Exception(e.Message);
             }
         }
     }

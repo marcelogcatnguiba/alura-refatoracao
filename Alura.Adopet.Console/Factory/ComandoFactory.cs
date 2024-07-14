@@ -1,5 +1,4 @@
-using Alura.Adopet.Console.Entities.Enums;
-using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Comandos.Interfaces;
 
 namespace Alura.Adopet.Console.Factory
 {
