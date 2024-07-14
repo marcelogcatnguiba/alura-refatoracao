@@ -12,9 +12,9 @@ namespace Alura.Adopet.Console.Comandos
     public class ImportComando : IComando
     {
         private readonly IAPIService<Pet> _client;
-        private readonly ILeitor _leitorArquivo;
+        private readonly ILeitor<Pet> _leitorArquivo;
         
-        public ImportComando(ILeitor leitorArquivo, IAPIService<Pet> httpClientPet)
+        public ImportComando(ILeitor<Pet> leitorArquivo, IAPIService<Pet> httpClientPet)
         {
             _leitorArquivo = leitorArquivo;
             _client = httpClientPet;
@@ -31,12 +31,12 @@ namespace Alura.Adopet.Console.Comandos
             {
                 var listaDePet = _leitorArquivo.RealizarLeitura();
 
-                foreach (var pet in listaDePet.Pets)
+                foreach (var pet in listaDePet)
                 {
                     await _client.CreatePetAsync(pet);
                 }
 
-                return Result.Ok().WithSuccess(new SuccessImport(listaDePet.Pets));
+                return Result.Ok().WithSuccess(new SuccessImport(listaDePet));
             }
             catch(NullReferenceException ex)
             {

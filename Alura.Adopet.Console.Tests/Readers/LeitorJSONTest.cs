@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
 using FluentAssertions;
@@ -32,7 +31,7 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             var result = leitorJSON.RealizarLeitura();
 
-            result.Pets.Should().HaveCount(4);
+            result.Should().HaveCount(4);
         }
 
         public void Dispose()

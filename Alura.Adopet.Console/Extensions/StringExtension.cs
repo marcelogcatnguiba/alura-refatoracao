@@ -31,7 +31,6 @@ namespace Alura.Adopet.Console.Extensions
             var petTipo = (TipoPet)Enum.Parse(typeof(TipoPet), petSeparado[2]);
 
             return new Pet(petId, petNome, petTipo);
-
         }
     }
 }

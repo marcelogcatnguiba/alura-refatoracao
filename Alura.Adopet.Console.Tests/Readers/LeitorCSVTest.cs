@@ -1,8 +1,5 @@
-using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Readers;
-using Alura.Adopet.Console.Readers.Interfaces;
 using FluentAssertions;
-using Moq;
 
 namespace Alura.Adopet.Console.Tests.Readers
 {
@@ -27,10 +24,10 @@ namespace Alura.Adopet.Console.Tests.Readers
         [Fact]
         public void DeveRetornarListaPets_QuandoRealizarLeitura()
         {
-            LeitorCSV leitor = new(_caminhoArquivo);
+            LeitorPetCSV leitor = new(_caminhoArquivo);
             var result = leitor.RealizarLeitura();
 
-            result.Pets.Should().HaveCount(5);
+            result.Should().HaveCount(5);
         }
 
         public void Dispose()

@@ -15,7 +15,7 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             var result = factory.CriarLeitor();
 
-            result.Should().BeOfType<LeitorCSV>();
+            result.Should().BeOfType<LeitorPetCSV>();
         }
         
         [Fact]

@@ -1,5 +1,4 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Readers.Interfaces;
@@ -10,21 +9,22 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportComandoTest
     {
-        private readonly Mock<ILeitor> _leitorArquivo = new();
+        private readonly Mock<ILeitor<Pet>> _leitorArquivo = new();
         private readonly Mock<IAPIService<Pet>> _clientPet = new();
+        private readonly List<Pet> _pets;
+
+        public ImportComandoTest()
+        {
+            _pets = 
+            [
+                new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
+            ];
+        }
 
         [Fact]
         public async Task DeveImportarPet_QuandoEstiverNoArquivo()
         {
-            ResultReader resultReader = new()
-            {
-                Pets = 
-                [
-                    new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
-                ]
-            };
-            
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
 
             ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
@@ -37,15 +37,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         [Fact]
         public async Task DeveSerImportadoPet()
         {
-            ResultReader resultReader = new()
-            {
-                Pets = 
-                [
-                    new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
-                ]
-            };
-            
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
+            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
             _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
 
             ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);

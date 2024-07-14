@@ -1,9 +1,7 @@
-using Alura.Adopet.Console.Readers.Result;
-
 namespace Alura.Adopet.Console.Readers.Interfaces
 {
-    public interface ILeitor
+    public interface ILeitor<T>
     {
-        ResultReader RealizarLeitura();
+        IEnumerable<T> RealizarLeitura();
     }
 }

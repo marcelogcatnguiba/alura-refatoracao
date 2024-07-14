@@ -1,4 +1,3 @@
-using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Entities.Enums;
 using Alura.Adopet.Console.Extensions;
 using Alura.Adopet.Console.Readers.Interfaces;
@@ -11,11 +10,11 @@ namespace Alura.Adopet.Console.Factory
 {
     public class SelecionaComando : ComandoFactory
     {
-        private readonly ILeitor _leitorArquivo;
+        private readonly ILeitor<Pet> _leitorArquivo;
         private readonly IAPIService<Pet> _clientPet;
         private readonly string? _comando;
 
-        public SelecionaComando(ILeitor leitorArquivo, IAPIService<Pet> clientPet, string? comando = null)
+        public SelecionaComando(ILeitor<Pet> leitorArquivo, IAPIService<Pet> clientPet, string? comando = null)
         {
             _leitorArquivo = leitorArquivo;
             _clientPet = clientPet;

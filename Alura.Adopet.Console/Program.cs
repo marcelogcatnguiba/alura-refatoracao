@@ -11,7 +11,7 @@ var comando = args[0].Trim();
 var helpComando = args.Length > 1 ? args[1] : null;
 
 SelecionaReader selecionaReader = new(Configuration.CaminhoArquivoImportacao);
-ILeitor leitorArquivo = selecionaReader.CriarLeitor();
+ILeitor<Pet> leitorArquivo = selecionaReader.CriarLeitor();
 
 IAPIService<Pet> httpClientPet = new PetService(new HttpClientFactory().CreateClient("adopet"));
 
