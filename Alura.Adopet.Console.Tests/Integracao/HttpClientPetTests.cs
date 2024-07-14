@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.Services;
 
 namespace Alura.Adopet.Console.Tests.Integracao
 {

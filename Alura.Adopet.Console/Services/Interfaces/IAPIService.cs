@@ -1,8 +1,8 @@
-namespace Alura.Adopet.Console.ConfigureHttp.Interfaces
+namespace Alura.Adopet.Console.Services.Interfaces
 {
     public interface IAPIService<T>
     {
-        Task CreatePetAsync(T pet);
+        Task CreatePetAsync(T obj);
         Task<IEnumerable<T>?> ListPetsAsync();
     }
 }

@@ -1,10 +1,10 @@
 using System.Net.Http.Headers;
 
-namespace Alura.Adopet.Console.ConfigureHttp
+namespace Alura.Adopet.Console.Services
 {
-    public class PetClientFactory : IHttpClientFactory
+    public class HttpClientFactory : IHttpClientFactory
     {
-        private string _uri = Configuration.UrlAdoPet;
+        private readonly string _uri = Configuration.UrlAdoPet;
         public HttpClient CreateClient(string name)
         {
             HttpClient client = new ();

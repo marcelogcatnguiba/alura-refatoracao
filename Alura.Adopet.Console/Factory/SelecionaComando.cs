@@ -1,10 +1,10 @@
-using Alura.Adopet.Console.ConfigureHttp;
+using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Entities.Enums;
 using Alura.Adopet.Console.Extensions;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Comandos.Interfaces;
-using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.Factory

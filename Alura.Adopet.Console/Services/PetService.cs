@@ -1,8 +1,8 @@
 using System.Net.Http.Json;
-using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.Entities;
 
-namespace Alura.Adopet.Console.ConfigureHttp
+namespace Alura.Adopet.Console.Services
 {
     public class PetService(HttpClient client) : IAPIService<Pet>
     {

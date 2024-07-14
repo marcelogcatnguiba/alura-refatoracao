@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Readers.Interfaces;
-using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Alura.Adopet.Console.Services.Interfaces;
 using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
