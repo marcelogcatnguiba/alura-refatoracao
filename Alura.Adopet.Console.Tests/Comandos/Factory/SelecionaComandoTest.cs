@@ -13,7 +13,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
         public void DeveRetornarComando_Import()
         {
             Mock<ILeitor> leitor = new();
-            Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
+            Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("import");
@@ -25,7 +25,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
         public void DeveRetornarComando_Help()
         {
             Mock<ILeitor> leitor = new();
-            Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
+            Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("help");
@@ -37,7 +37,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
         public void DeveRetornarComando_Show()
         {
             Mock<ILeitor> leitor = new();
-            Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
+            Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("show");
@@ -49,7 +49,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
         public void DeveRetornarComando_List()
         {
             Mock<ILeitor> leitor = new();
-            Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
+            Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(leitor.Object, client.Object);
             var result = factory.CriarComando("list");
@@ -61,7 +61,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
         public void DeveRetornarException_QuandoComandoInvalido()
         {
             Mock<ILeitor> leitor = new();
-            Mock<HttpClientPet> client = new(It.IsAny<HttpClient>());
+            Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(leitor.Object, client.Object);
             Action action = () => factory.CriarComando("invalido");

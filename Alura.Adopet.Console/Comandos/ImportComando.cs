@@ -1,20 +1,20 @@
-using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.Comandos
 {
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
     public class ImportComando : IComando
     {
-        private readonly IAPIService _client;
+        private readonly IAPIService<Pet> _client;
         private readonly ILeitor _leitorArquivo;
         
-        public ImportComando(ILeitor leitorArquivo, IAPIService httpClientPet)
+        public ImportComando(ILeitor leitorArquivo, IAPIService<Pet> httpClientPet)
         {
             _leitorArquivo = leitorArquivo;
             _client = httpClientPet;
@@ -33,7 +33,7 @@ namespace Alura.Adopet.Console.Comandos
 
                 foreach (var pet in listaDePet.Pets)
                 {
-                    var resposta = await _client.CreatePetAsync(pet);
+                    await _client.CreatePetAsync(pet);
                 }
 
                 return Result.Ok().WithSuccess(new SuccessImport(listaDePet.Pets));

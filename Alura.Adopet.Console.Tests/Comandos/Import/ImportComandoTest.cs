@@ -1,19 +1,17 @@
-using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
-using Moq;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportComandoTest
     {
         private readonly Mock<ILeitor> _leitorArquivo = new();
-        private readonly Mock<IAPIService> _clientPet = new();
+        private readonly Mock<IAPIService<Pet>> _clientPet = new();
 
         [Fact]
         public async Task DeveImportarPet_QuandoEstiverNoArquivo()
@@ -27,7 +25,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             };
             
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
-            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
+            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
 
             ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
@@ -48,7 +46,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             };
             
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(resultReader);
-            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>())).ReturnsAsync(new HttpResponseMessage());
+            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
 
             ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             

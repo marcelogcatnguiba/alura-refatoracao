@@ -5,16 +5,17 @@ using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.ConfigureHttp.Interfaces;
+using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.Factory
 {
     public class SelecionaComando : ComandoFactory
     {
         private readonly ILeitor _leitorArquivo;
-        private readonly IAPIService _clientPet;
+        private readonly IAPIService<Pet> _clientPet;
         private readonly string? _comando;
 
-        public SelecionaComando(ILeitor leitorArquivo, IAPIService clientPet, string? comando = null)
+        public SelecionaComando(ILeitor leitorArquivo, IAPIService<Pet> clientPet, string? comando = null)
         {
             _leitorArquivo = leitorArquivo;
             _clientPet = clientPet;

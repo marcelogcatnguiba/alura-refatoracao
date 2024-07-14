@@ -19,7 +19,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.List
                 new(Guid.NewGuid(), "Kira", TipoPet.Gato)
             ];
 
-            Mock<HttpClientPet> clientMock = new(new PetClientFactory().CreateClient());
+            Mock<PetService> clientMock = new(new PetClientFactory().CreateClient());
             clientMock.Setup(x => x.ListPetsAsync()).ReturnsAsync(listaPets);
 
             ListComando service = new(clientMock.Object);

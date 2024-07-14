@@ -1,0 +1,17 @@
+[
+    {
+        "Id" : "456b24f4-19e2-4423-845d-4a80e8854a41",
+        "Nome" : "Fulnao de Tal",
+        "Email" : "fulano@example.org"
+    },
+    {
+        "Id" : "3aeff89d-7da2-4603-852e-d232fbdc56bd",
+        "Nome" : "Jose Silva",
+        "Email" : "silva@example.org"
+    },
+    {
+        "Id" : "609c9b0d-aa02-459f-a340-256513fc9bad",
+        "Nome" : "Rogerio Milano",
+        "Email" : "milano@example.org"
+    }
+]
