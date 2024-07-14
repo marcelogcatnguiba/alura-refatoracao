@@ -1,5 +1,7 @@
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Readers.Result;
+using Newtonsoft.Json;
 
 namespace Alura.Adopet.Console.Readers
 {
@@ -9,8 +11,24 @@ namespace Alura.Adopet.Console.Readers
 
         public ResultReader RealizarLeitura()
         {
-            // Regra de leitura de JSON
-            throw new NotImplementedException();
+            try
+            {   
+                using StreamReader streamReader = new(_caminho);
+
+                var jsonString = streamReader.ReadToEnd();
+                var pets = JsonConvert.DeserializeObject<List<Pet>>(jsonString);
+
+                ResultReader result = new()
+                {
+                    Pets = pets!
+                };
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

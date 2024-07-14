@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.ConfigureHttp;
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
@@ -11,9 +12,9 @@ namespace Alura.Adopet.Console.Services
     public class ImportService : IComando
     {
         private readonly HttpClientPet _client;
-        private readonly LeitorCSV _leitorArquivo;
+        private readonly ILeitor _leitorArquivo;
         
-        public ImportService(LeitorCSV leitorArquivo, HttpClientPet httpClientPet)
+        public ImportService(ILeitor leitorArquivo, HttpClientPet httpClientPet)
         {
             _leitorArquivo = leitorArquivo;
             _client = httpClientPet;

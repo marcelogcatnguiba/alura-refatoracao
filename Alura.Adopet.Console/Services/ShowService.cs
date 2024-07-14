@@ -3,15 +3,16 @@ using Alura.Adopet.Console.Documentation;
 using FluentResults;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Services.Interfaces;
+using Alura.Adopet.Console.Readers.Interfaces;
 
 namespace Alura.Adopet.Console.Services
 {
     [ClassDocuments("show", "Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.")]
     public class ShowService : IComando
     {
-        private readonly LeitorCSV _leitorDeArquivo;
+        private readonly ILeitor _leitorDeArquivo;
 
-        public ShowService(LeitorCSV leitorArquivo)
+        public ShowService(ILeitor leitorArquivo)
         {
             _leitorDeArquivo = leitorArquivo;
         }

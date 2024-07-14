@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Interfaces;
 
@@ -12,14 +13,14 @@ namespace Alura.Adopet.Console.Factory.Reader
         {
             switch(_extensao)
             {
-                case "csv":
+                case ".csv":
                     return new LeitorCSV(_caminhoDoArquivo);
                 
-                case "json":
+                case ".json":
                     return new LeitorJSON(_caminhoDoArquivo);
                     
                 default:
-                    throw new Exception("Arquivo invalido");
+                    throw new LeitorArquivosException($"Formato do arquivo invalido: {_extensao}");
             }
         }
     }

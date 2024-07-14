@@ -5,6 +5,6 @@ namespace Alura.Adopet.Console.Factory
 {
     public abstract class ComandoFactory
     {
-        public abstract IComando CriarComando(TipoComando comando);
+        public abstract IComando CriarComando(string comando);
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Alura.Adopet.Console;
 using Alura.Adopet.Console.ConfigureHttp;
-using Alura.Adopet.Console.Entities.Enums;
-using Alura.Adopet.Console.Extensions;
 using Alura.Adopet.Console.Factory;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.UI;
@@ -13,8 +11,7 @@ LeitorCSV leitorArquivo = new(Configuration.CaminhoArquivoImportacao);
 HttpClientPet httpClientPet = new(new PetClientFactory().CreateClient("adopet"));
 
 SelecionaComandoFactory selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
-var comandoEnum = (TipoComando)Enum.Parse(typeof(TipoComando), comando.PrimeiraLetraMaiuscula());
-var comandoSelect = selecionaComando.CriarComando(comandoEnum);
+var comandoSelect = selecionaComando.CriarComando(comando);
 
 var result = await comandoSelect.ExecutarComando();
 
