@@ -5,22 +5,18 @@ using Alura.Adopet.Console.Readers.Result;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using Moq;
+using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.ConfigureHttp.Interfaces;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportComandoTest
     {
-        private readonly Mock<LeitorCSV> _leitorArquivo;
-        private readonly Mock<HttpClientPet> _clientPet;
-
-        public ImportComandoTest()
-        {
-            _leitorArquivo = new Mock<LeitorCSV>(Configuration.CaminhoArquivoImportacao);
-            _clientPet = new Mock<HttpClientPet>(new PetClientFactory().CreateClient());
-        }
+        private readonly Mock<ILeitor> _leitorArquivo = new();
+        private readonly Mock<IAPIService> _clientPet = new();
 
         [Fact]
-        public async Task QuandoPetEstiverNoArquivoDeveSerImportado()
+        public async Task DeveImportarPet_QuandoEstiverNoArquivo()
         {
             ResultReader resultReader = new()
             {

@@ -1,9 +1,10 @@
 using System.Net.Http.Json;
+using Alura.Adopet.Console.ConfigureHttp.Interfaces;
 using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.ConfigureHttp
 {
-    public class HttpClientPet
+    public class HttpClientPet : IAPIService
     {
         private readonly HttpClient _client;
         public HttpClientPet(HttpClient client)

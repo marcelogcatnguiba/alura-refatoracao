@@ -3,15 +3,16 @@ using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
+using Alura.Adopet.Console.ConfigureHttp.Interfaces;
 
 namespace Alura.Adopet.Console.Comandos
 {
     [ClassDocuments("list", "Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list")]
     public class ListComando : IComando
     {
-        private readonly HttpClientPet _client;
+        private readonly IAPIService _client;
         
-        public ListComando(HttpClientPet client)
+        public ListComando(IAPIService client)
         {
             _client = client;
         }
