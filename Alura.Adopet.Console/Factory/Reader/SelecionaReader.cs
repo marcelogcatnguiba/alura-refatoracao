@@ -18,7 +18,7 @@ namespace Alura.Adopet.Console.Factory.Reader
                     return new LeitorPetCSV(_caminhoDoArquivo);
                 
                 case ".json":
-                    return new LeitorJSON(_caminhoDoArquivo);
+                    return new LeitorJSON<Pet>(_caminhoDoArquivo);
                     
                 default:
                     throw new LeitorArquivosException($"Formato do arquivo invalido: {_extensao}");

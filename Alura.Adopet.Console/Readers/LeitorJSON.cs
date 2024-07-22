@@ -1,27 +1,31 @@
-using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Newtonsoft.Json;
 
 namespace Alura.Adopet.Console.Readers
 {
-    public class LeitorJSON(string caminhoDoArquivo) : ILeitor<Pet>
+    public class LeitorJSON<T>(string caminhoDoArquivo) : ILeitor<T>
     {
         private readonly string _caminho = caminhoDoArquivo;
 
-        public IEnumerable<Pet> RealizarLeitura()
+        public IEnumerable<T> RealizarLeitura()
         {
             try
             {   
                 using StreamReader streamReader = new(_caminho);
                 var jsonString = streamReader.ReadToEnd();
-                var pets = JsonConvert.DeserializeObject<List<Pet>>(jsonString);
+                var objs = RetornaClassFromJSON(jsonString);
 
-                return pets!;
+                return objs!;
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        private static List<T> RetornaClassFromJSON(string json)
+        {
+            return JsonConvert.DeserializeObject<List<T>>(json)!;
         }
     }
 }

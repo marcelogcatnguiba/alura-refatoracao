@@ -27,7 +27,7 @@ namespace Alura.Adopet.Console.Tests.Readers
         [Fact]
         public void DeveRetornarListaPets_QuandoRealizarLeitura()
         {
-            LeitorJSON leitorJSON = new(_caminho);
+            LeitorJSON<Pet> leitorJSON = new(_caminho);
 
             var result = leitorJSON.RealizarLeitura();
 

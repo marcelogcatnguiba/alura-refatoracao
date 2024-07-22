@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Factory.Reader;
 using Alura.Adopet.Console.Readers;
@@ -26,7 +27,7 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             var result = factory.CriarLeitor();
 
-            result.Should().BeOfType<LeitorJSON>();
+            result.Should().BeOfType<LeitorJSON<Pet>>();
         }
 
         [Fact]
