@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Abstracao;
 using FluentAssertions;
 using Newtonsoft.Json;
 
@@ -8,6 +9,7 @@ namespace Alura.Adopet.Console.Tests.Readers
     public class LeitorJSONTest : IDisposable
     {
         private readonly string _caminho;
+        
         public LeitorJSONTest()
         {
             List<Pet> pets = 

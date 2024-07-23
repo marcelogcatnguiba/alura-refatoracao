@@ -6,6 +6,7 @@ namespace Alura.Adopet.Console.Tests.Readers
     public class LeitorCSVTest : IDisposable
     {
         private readonly string _caminhoArquivo;
+        
         public LeitorCSVTest()
         {
             string pets = 

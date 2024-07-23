@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Abstracao;
 using Alura.Adopet.Console.Readers.Interfaces;
 
 namespace Alura.Adopet.Console.Factory.Reader

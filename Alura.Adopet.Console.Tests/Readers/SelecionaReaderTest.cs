@@ -2,6 +2,7 @@ using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Factory.Reader;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Abstracao;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Readers

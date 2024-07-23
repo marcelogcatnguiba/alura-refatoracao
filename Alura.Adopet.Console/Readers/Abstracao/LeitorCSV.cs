@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Readers.Interfaces;
 
-namespace Alura.Adopet.Console.Readers
+namespace Alura.Adopet.Console.Readers.Abstracao
 {
     public abstract class LeitorCSV<T>(string caminhoDoArquivo) : ILeitor<T>
     {
