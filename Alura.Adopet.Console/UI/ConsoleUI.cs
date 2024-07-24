@@ -30,7 +30,7 @@ namespace Alura.Adopet.Console.UI
             var success = result.Successes.First();
             switch(success)
             {
-                case SuccessImport i:
+                case SuccessImport<Pet> i:
                     ExibirImportacao(i.Pets);
                     break;
 
@@ -96,6 +96,13 @@ namespace Alura.Adopet.Console.UI
         private static void ExibirComandoEspecifico(string comando)
         {
             System.Console.WriteLine(comando);
+        }
+
+        internal static void ExibeException(Exception e)
+        {
+            System.Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.WriteLine(e.Message);
+            System.Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

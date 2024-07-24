@@ -1,4 +1,3 @@
-using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;

@@ -1,5 +1,3 @@
-using Alura.Adopet.Console.Entities.Enums;
-using Alura.Adopet.Console.Extensions;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Comandos.Interfaces;
@@ -23,32 +21,19 @@ namespace Alura.Adopet.Console.Factory
         
         public override IComando CriarComando(string comando)
         {
-            var comandoEnum = ComandoToEnum(comando);
-
-            return comandoEnum switch
+            
+            return comando switch
             {
-                TipoComando.Help => new HelpComando(_comando),
+                "help" => new HelpComando(_comando),
 
-                TipoComando.Import => new ImportComando(_leitorArquivo, _clientPet),
+                "import" => new ImportComando<Pet>(_leitorArquivo, _clientPet),
 
-                TipoComando.List => new ListComando(_clientPet),
+                "list" => new ListComando(_clientPet),
 
-                TipoComando.Show => new ShowComando(_leitorArquivo),
+                "show" => new ShowComando(_leitorArquivo),
                 
-                _ => throw new Exception($"Falha fabrica de comandos"),
+                _ => throw new Exception($"Comando {comando} invalido"),
             };
-        }
-
-        private static TipoComando ComandoToEnum(string comando)
-        {
-            try
-            {
-                return (TipoComando)Enum.Parse(typeof(TipoComando), comando.PrimeiraLetraMaiuscula());
-            }
-            catch (Exception)
-            {
-                throw new Exception($"Comando {comando} invalido");
-            }
         }
     }
 }

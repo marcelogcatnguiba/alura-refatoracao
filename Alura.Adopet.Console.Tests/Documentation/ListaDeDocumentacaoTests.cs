@@ -27,7 +27,7 @@ namespace Alura.Adopet.Console.Tests.Documentation
             
             result
                 .Should()
-                .Be("Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>");
+                .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>");
         }
 
         [Fact]

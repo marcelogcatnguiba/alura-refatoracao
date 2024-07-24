@@ -6,18 +6,25 @@ using Alura.Adopet.Console.Factory;
 using Alura.Adopet.Console.Factory.Reader;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.UI;
+using FluentResults;
 
-var comando = args[0].Trim();
-var helpComando = args.Length > 1 ? args[1] : null;
+try
+{
+    var comando = args[0].Trim();
+    var helpComando = args.Length > 1 ? args[1] : null;
 
-SelecionaReader selecionaReader = new(Configuration.CaminhoArquivoImportacao);
-ILeitor<Pet> leitorArquivo = selecionaReader.CriarLeitor();
+    SelecionaReader selecionaReader = new(Configuration.CaminhoArquivoImportacao);
+    ILeitor<Pet> leitorArquivo = selecionaReader.CriarLeitor();
+    IAPIService<Pet> httpClientPet = new PetService(new HttpClientFactory().CreateClient("adopet"));
 
-IAPIService<Pet> httpClientPet = new PetService(new HttpClientFactory().CreateClient("adopet"));
+    SelecionaComando selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
 
-SelecionaComando selecionaComando = new(leitorArquivo, httpClientPet, helpComando);
-var comandoSelect = selecionaComando.CriarComando(comando);
+    var comandoSelect = selecionaComando.CriarComando(comando);
+    var result = await comandoSelect.ExecutarComando();
 
-var result = await comandoSelect.ExecutarComando();
-
-ConsoleUI.ExibeResultado(result);
+    ConsoleUI.ExibeResultado(result);
+}
+catch(Exception e)
+{
+    ConsoleUI.ExibeException(e);
+}

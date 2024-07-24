@@ -4,17 +4,16 @@ using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 using Alura.Adopet.Console.Services.Interfaces;
-using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.Comandos
 {
-    [ClassDocuments("import", "Realiza a importação em lote de um arquivos de pets.\nDigite adopet import <arquivo>")]
-    public class ImportComando : IComando
+    [ClassDocuments("import", "Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>")]
+    public class ImportComando<T> : IComando
     {
-        private readonly IAPIService<Pet> _client;
-        private readonly ILeitor<Pet> _leitorArquivo;
+        private readonly IAPIService<T> _client;
+        private readonly ILeitor<T> _leitorArquivo;
         
-        public ImportComando(ILeitor<Pet> leitorArquivo, IAPIService<Pet> httpClientPet)
+        public ImportComando(ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet)
         {
             _leitorArquivo = leitorArquivo;
             _client = httpClientPet;
@@ -29,14 +28,14 @@ namespace Alura.Adopet.Console.Comandos
         {
             try
             {
-                var listaDePet = _leitorArquivo.RealizarLeitura();
+                var lista = _leitorArquivo.RealizarLeitura();
 
-                foreach (var pet in listaDePet)
+                foreach (var obj in lista)
                 {
-                    await _client.CreatePetAsync(pet);
+                    await _client.CreateAsync(obj);
                 }
 
-                return Result.Ok().WithSuccess(new SuccessImport(listaDePet));
+                return Result.Ok().WithSuccess(new SuccessImport<T>(lista));
             }
             catch(NullReferenceException ex)
             {

@@ -8,7 +8,7 @@ namespace Alura.Adopet.Console.Services
     {
         private readonly HttpClient _client = client;
 
-        public virtual async Task CreatePetAsync(Cliente cliente)
+        public virtual async Task CreateAsync(Cliente cliente)
         {
             await _client.PostAsJsonAsync("cliente/add", cliente);
         }

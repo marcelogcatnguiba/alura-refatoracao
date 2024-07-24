@@ -20,7 +20,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             var factory = new SelecionaComando(_leitor.Object, client.Object);
             var result = factory.CriarComando("import");
 
-            result.Should().BeOfType<ImportComando>();
+            result.Should().BeOfType<ImportComando<Pet>>();
         }
 
         [Fact]
@@ -56,15 +56,17 @@ namespace Alura.Adopet.Console.Tests.Comandos.Factory
             result.Should().BeOfType<ListComando>();
         }
 
-        [Fact]
-        public void DeveRetornarException_QuandoComandoInvalido()
+        [Theory]
+        [InlineData("invalido")]
+        [InlineData("import-clientes")]
+        public void DeveRetornarException_QuandoComandoInvalido(string comando)
         {
             Mock<PetService> client = new(It.IsAny<HttpClient>());
 
             var factory = new SelecionaComando(_leitor.Object, client.Object);
-            Action action = () => factory.CriarComando("invalido");
+            Action action = () => factory.CriarComando(comando);
 
-            action.Should().Throw<Exception>().WithMessage("Comando invalido invalido");
+            action.Should().Throw<Exception>().WithMessage($"Comando {comando} invalido");
         }
     }
 }

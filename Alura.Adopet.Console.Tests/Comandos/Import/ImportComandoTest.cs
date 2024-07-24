@@ -25,9 +25,9 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         public async Task DeveImportarPet_QuandoEstiverNoArquivo()
         {
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
-            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
+            _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportComando<Pet> importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
 
@@ -38,12 +38,12 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         public async Task DeveSerImportadoPet()
         {
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
-            _clientPet.Setup(x => x.CreatePetAsync(It.IsAny<Pet>()));
+            _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportComando<Pet> importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
-            var pet = (SuccessImport)result.Successes.First();
+            var pet = (SuccessImport<Pet>)result.Successes.First();
 
             Assert.Equal("Lima", pet.Pets.First().Nome);
         }
