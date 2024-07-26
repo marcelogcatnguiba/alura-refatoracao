@@ -4,7 +4,7 @@ using Alura.Adopet.Console.Readers.Abstracao;
 
 namespace Alura.Adopet.Console.Readers
 {
-    public class LeitorPetCSV(string caminhoDoArquivo) : LeitorCSV<Pet>(caminhoDoArquivo)
+    public class LeitorCSVPet(string caminhoDoArquivo) : LeitorCSV<Pet>(caminhoDoArquivo)
     {
         public override Pet RetornaClassFromLine(string line)
         {

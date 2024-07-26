@@ -22,7 +22,7 @@ namespace Alura.Adopet.Console.Tests.Readers.Cliente
         [Fact]
         public void DeveRetornarClientesDoCSV()
         {
-            LeitorClienteCSV leitor = new(_caminhoArquivo);
+            LeitorCSVCliente leitor = new(_caminhoArquivo);
 
             var result = leitor.RealizarLeitura();
 

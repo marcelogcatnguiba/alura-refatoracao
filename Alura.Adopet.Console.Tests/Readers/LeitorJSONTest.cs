@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Abstracao;
+using Alura.Adopet.Console.Readers.LeitoresPet;
 using FluentAssertions;
 using Newtonsoft.Json;
 
@@ -29,7 +30,7 @@ namespace Alura.Adopet.Console.Tests.Readers
         [Fact]
         public void DeveRetornarListaPets_QuandoRealizarLeitura()
         {
-            LeitorJSON<Pet> leitorJSON = new(_caminho);
+            LeitorJSONPet leitorJSON = new(_caminho);
 
             var result = leitorJSON.RealizarLeitura();
 

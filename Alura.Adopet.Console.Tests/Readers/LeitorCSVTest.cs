@@ -1,4 +1,6 @@
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Readers.Interfaces;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Readers
@@ -6,6 +8,7 @@ namespace Alura.Adopet.Console.Tests.Readers
     public class LeitorCSVTest : IDisposable
     {
         private readonly string _caminhoArquivo;
+        private readonly ILeitor<Pet> _leitor;
         
         public LeitorCSVTest()
         {
@@ -20,15 +23,17 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             File.WriteAllText("pets.csv", pets);
             _caminhoArquivo = Path.GetFullPath("pets.csv");
+
+            _leitor = new LeitorCSVPet(_caminhoArquivo);
         }
 
         [Fact]
         public void DeveRetornarListaPets_QuandoRealizarLeitura()
         {
-            LeitorPetCSV leitor = new(_caminhoArquivo);
-            var result = leitor.RealizarLeitura();
+            var result = _leitor.RealizarLeitura();
 
             result.Should().HaveCount(5);
+            Dispose();
         }
 
         public void Dispose()

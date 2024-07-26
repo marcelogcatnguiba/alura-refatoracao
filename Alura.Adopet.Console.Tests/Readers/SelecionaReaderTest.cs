@@ -3,6 +3,7 @@ using Alura.Adopet.Console.Exeptions;
 using Alura.Adopet.Console.Factory.Reader;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Abstracao;
+using Alura.Adopet.Console.Readers.LeitoresPet;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Readers
@@ -17,7 +18,7 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             var result = factory.CriarLeitor();
 
-            result.Should().BeOfType<LeitorPetCSV>();
+            result.Should().BeOfType<LeitorCSVPet>();
         }
         
         [Fact]
@@ -28,7 +29,7 @@ namespace Alura.Adopet.Console.Tests.Readers
 
             var result = factory.CriarLeitor();
 
-            result.Should().BeOfType<LeitorJSON<Pet>>();
+            result.Should().BeOfType<LeitorJSONPet>();
         }
 
         [Fact]

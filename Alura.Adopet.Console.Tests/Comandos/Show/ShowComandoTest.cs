@@ -23,7 +23,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Show
         [Fact]
         public async Task DeveConterPetsNaLista()
         {
-            Mock<LeitorPetCSV> leitor = new(Configuration.CaminhoArquivoImportacao);
+            Mock<LeitorCSVPet> leitor = new(Configuration.CaminhoArquivoImportacao);
             leitor.Setup(x => x.RealizarLeitura()).Returns(_pets);
 
             ShowComando show = new(leitor.Object);

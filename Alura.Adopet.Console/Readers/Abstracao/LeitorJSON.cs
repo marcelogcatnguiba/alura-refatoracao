@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Alura.Adopet.Console.Readers.Abstracao
 {
-    public class LeitorJSON<T>(string caminhoDoArquivo) : ILeitor<T>
+    public abstract class LeitorJSON<T>(string caminhoDoArquivo) : ILeitor<T>
     {
         private readonly string _caminho = caminhoDoArquivo;
 
