@@ -6,7 +6,6 @@ using Alura.Adopet.Console.Factory;
 using Alura.Adopet.Console.Factory.Reader;
 using Alura.Adopet.Console.Readers.Interfaces;
 using Alura.Adopet.Console.UI;
-using FluentResults;
 
 try
 {

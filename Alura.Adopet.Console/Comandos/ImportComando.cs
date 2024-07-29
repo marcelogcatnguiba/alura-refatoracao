@@ -21,10 +21,10 @@ namespace Alura.Adopet.Console.Comandos
 
         public async Task<Result> ExecutarComando()
         {
-            return await ImportarArquivoPets();
+            return await ImportarArquivo();
         }
 
-        private async Task<Result> ImportarArquivoPets()
+        private async Task<Result> ImportarArquivo()
         {
             try
             {

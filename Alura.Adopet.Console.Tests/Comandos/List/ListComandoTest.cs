@@ -20,7 +20,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.List
             ];
 
             Mock<PetService> clientMock = new(new HttpClientFactory().CreateClient());
-            clientMock.Setup(x => x.ListPetsAsync()).ReturnsAsync(listaPets);
+            clientMock.Setup(x => x.ListAsync()).ReturnsAsync(listaPets);
 
             ListComando service = new(clientMock.Object);
             

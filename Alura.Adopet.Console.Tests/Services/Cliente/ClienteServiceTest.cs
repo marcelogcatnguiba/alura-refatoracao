@@ -54,7 +54,7 @@ namespace Alura.Adopet.Console.Tests.Services.Cliente
             
             ClienteService service = new(client);
 
-            var result = await service.ListPetsAsync();
+            var result = await service.ListAsync();
 
             result.Should().HaveCount(3);
         }

@@ -45,7 +45,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             var result = await importacao.ExecutarComando();
             var pet = (SuccessImport<Pet>)result.Successes.First();
 
-            Assert.Equal("Lima", pet.Pets.First().Nome);
+            Assert.Equal("Lima", pet.Entities.First().Nome);
         }
     }
 }
