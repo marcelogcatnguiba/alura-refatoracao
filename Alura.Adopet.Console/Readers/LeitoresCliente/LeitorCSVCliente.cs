@@ -3,6 +3,7 @@ using Alura.Adopet.Console.Readers.Abstracao;
 
 namespace Alura.Adopet.Console.Readers
 {
+    [LeitorAtribute(".csv")]
     public class LeitorCSVCliente(string caminhoDoArquivo) : LeitorCSV<Cliente>(caminhoDoArquivo)
     {
         public override Cliente RetornaClassFromLine(string line)

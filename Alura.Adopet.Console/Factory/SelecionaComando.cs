@@ -1,39 +1,36 @@
-using Alura.Adopet.Console.Readers.Interfaces;
-using Alura.Adopet.Console.Comandos;
+using System.Reflection;
 using Alura.Adopet.Console.Comandos.Interfaces;
-using Alura.Adopet.Console.Services.Interfaces;
-using Alura.Adopet.Console.Entities;
+using Alura.Adopet.Console.Documentation;
+using Alura.Adopet.Console.Factory.Interfaces;
 
 namespace Alura.Adopet.Console.Factory
 {
-    public class SelecionaComando : ComandoFactory
+    public static class SelecionaComando
     {
-        private readonly ILeitor<Pet> _leitorArquivo;
-        private readonly IAPIService<Pet> _clientPet;
-        private readonly string? _comando;
-
-        public SelecionaComando(ILeitor<Pet> leitorArquivo, IAPIService<Pet> clientPet, string? comando = null)
+        public static IComando? CriarComando(string[] args)
         {
-            _leitorArquivo = leitorArquivo;
-            _clientPet = clientPet;
-            _comando = comando;
-        }
-        
-        public override IComando CriarComando(string comando)
-        {
-            
-            return comando switch
+            if(args is null || args.Length.Equals(0))
             {
-                "help" => new HelpComando(_comando),
+                return null;
+            }
 
-                "import" => new ImportComando<Pet>(_leitorArquivo, _clientPet),
+            var comando = args[0];
 
-                "list" => new ListComando(_clientPet),
+            var listaFabricas = Assembly
+                .GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => !x.IsInterface && x.IsAssignableTo(typeof(IComandoFactory)))
+                .Select(x => Activator.CreateInstance(x) as IComandoFactory);
+            
+            var tipo = Assembly
+                .GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => !x.IsInterface && x.IsAssignableTo(typeof(IComando)))
+                .FirstOrDefault(x => x.GetCustomAttributes<ClassDocuments>().Any(x => x.Comando.Equals(comando)));
 
-                "show" => new ShowComando(_leitorArquivo),
-                
-                _ => throw new Exception($"Comando {comando} invalido"),
-            };
+            var fabrica = listaFabricas.FirstOrDefault(x => x!.ConsegueCriarComando(tipo));
+
+            return fabrica?.CriarComando(args);
         }
     }
 }
