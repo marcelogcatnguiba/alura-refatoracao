@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.Comandos.Help;
 using Alura.Adopet.Console.Comandos.Import;
+using Alura.Adopet.Console.Comandos.List;
 using Alura.Adopet.Console.Comandos.Show;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Factory.Comandos;
@@ -32,7 +33,8 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
         [Theory]
         [InlineData("")]
         [InlineData("help")]
-        [InlineData("list")]
+        [InlineData("list-cliente")]
+        [InlineData("list-pet")]
         [InlineData("show-cliente")]
         [InlineData("show-pet")]
         [InlineData("import-cliente")]
@@ -66,14 +68,24 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
             result.Should().BeOfType<ShowClienteComando>();
         }
 
-        // [Fact]
-        // public void DeveRetornarComando_List()
-        // {
-        //     string[] args = ["list"];
+        [Fact]
+        public void DeveRetornarComando_ListCliente()
+        {
+            string[] args = ["list-cliente"];
             
-        //     var result = SelecionaComando.CriarComando(args);
+            var result = SelecionaComando.CriarComando(args);
 
-        //     result.Should().BeOfType<ShowComando>();
-        // }
+            result.Should().BeOfType<ListClienteComando>();
+        }
+        
+        [Fact]
+        public void DeveRetornarComando_ListPet()
+        {
+            string[] args = ["list-pet"];
+            
+            var result = SelecionaComando.CriarComando(args);
+
+            result.Should().BeOfType<ListPetComando>();
+        }
     }
 }

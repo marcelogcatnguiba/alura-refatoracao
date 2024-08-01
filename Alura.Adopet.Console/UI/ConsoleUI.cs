@@ -34,8 +34,8 @@ namespace Alura.Adopet.Console.UI
                     ExibirImportacao(i.Entities);
                     break;
 
-                case SuccessList l:
-                    ExibirPets(l.Pets);
+                case SuccessList<Pet> l:
+                    ExibirPets(l.Entities);
                     break;
 
                 case SuccessShow<Pet> ss:

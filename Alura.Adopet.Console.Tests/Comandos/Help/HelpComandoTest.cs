@@ -45,10 +45,12 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
                 .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-cliente ou import-pet <arquivo>");
         }
 
-        [Fact]
-        public async Task DeveMostrarDocumentacao_List()
+        [Theory]
+        [InlineData("list-pet")]
+        [InlineData("list-cliente")]
+        public async Task DeveMostrarDocumentacao_List(string comando)
         {
-            HelpComando help = new(["help", "list"]);
+            HelpComando help = new(["help", comando]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();

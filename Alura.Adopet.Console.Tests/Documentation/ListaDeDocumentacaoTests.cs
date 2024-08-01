@@ -30,11 +30,11 @@ namespace Alura.Adopet.Console.Tests.Documentation
                 .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-cliente ou import-pet <arquivo>");
         }
 
-        [Fact]
-        [Trait("Documentacao", "List")]
-        public void DeveRetornarDocumentacao_List()
+        [Theory]
+        [InlineData("list-cliente")]
+        [InlineData("list-pet")]
+        public void DeveRetornarDocumentacao_List(string comando)
         {
-            var comando = "list";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             
             result
