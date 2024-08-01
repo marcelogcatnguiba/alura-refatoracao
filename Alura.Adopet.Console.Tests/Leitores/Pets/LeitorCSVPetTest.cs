@@ -1,16 +1,14 @@
-using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Leitores.LeitoresPets;
 using FluentAssertions;
 
-namespace Alura.Adopet.Console.Tests.Readers
+namespace Alura.Adopet.Console.Tests.Leitores.Pets
 {
-    public class LeitorCSVTest : IDisposable
+    public class LeitorCSVPetTest : IDisposable
     {
         private readonly string _caminhoArquivo;
-        private readonly ILeitor<Pet> _leitor;
+        private readonly LeitorCSVPet _leitor;
         
-        public LeitorCSVTest()
+        public LeitorCSVPetTest()
         {
             string pets = 
             """

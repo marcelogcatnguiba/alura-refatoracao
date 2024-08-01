@@ -3,13 +3,13 @@ using Alura.Adopet.Console.Leitores.LeitoresPets;
 using FluentAssertions;
 using Newtonsoft.Json;
 
-namespace Alura.Adopet.Console.Tests.Readers
+namespace Alura.Adopet.Console.Tests.Leitores.Pets
 {
-    public class LeitorJSONTest : IDisposable
+    public class LeitorJSONPetTest : IDisposable
     {
         private readonly string _caminho;
         
-        public LeitorJSONTest()
+        public LeitorJSONPetTest()
         {
             List<Pet> pets = 
             [

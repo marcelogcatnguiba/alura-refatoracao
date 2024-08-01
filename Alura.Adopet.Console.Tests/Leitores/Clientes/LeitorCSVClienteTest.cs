@@ -1,7 +1,7 @@
 using Alura.Adopet.Console.Leitores.LeitoresClientes;
 using FluentAssertions;
 
-namespace Alura.Adopet.Console.Tests.Readers.Cliente
+namespace Alura.Adopet.Console.Tests.Leitores.Clientes
 {
     public class LeitorCSVClienteTest
     {
