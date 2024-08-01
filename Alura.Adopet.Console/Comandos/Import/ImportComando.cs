@@ -6,7 +6,7 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos.Import
 {
-    public abstract class ImportComando<T>(
+    public class ImportComando<T>(
         ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet) : IComando
     {
         private readonly IAPIService<T> _client = httpClientPet;

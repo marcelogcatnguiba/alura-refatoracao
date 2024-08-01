@@ -9,13 +9,13 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportPetComandoTest
     {
-        private readonly Mock<ILeitor<Pet>> _leitorArquivo = new();
-        private readonly Mock<IAPIService<Pet>> _clientPet = new();
-        private readonly List<Pet> _pets;
+        private readonly Mock<ILeitor<Pet>> _leitor = new();
+        private readonly Mock<IAPIService<Pet>> _service = new();
+        private readonly List<Pet> _entities;
 
         public ImportPetComandoTest()
         {
-            _pets = 
+            _entities = 
             [
                 new Pet(Guid.NewGuid(), "Lima", TipoPet.Cachorro)
             ];
@@ -24,10 +24,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         [Fact]
         public async Task DeveImportarPet_QuandoEstiverNoArquivo()
         {
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
-            _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
+            _leitor.Setup(x => x.RealizarLeitura()).Returns(_entities);
+            _service.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportPetComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportPetComando importacao = new (_leitor.Object, _service.Object);
             
             var result = await importacao.ExecutarComando();
 
@@ -37,10 +37,10 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
         [Fact]
         public async Task DeveSerImportadoPet()
         {
-            _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
-            _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
+            _leitor.Setup(x => x.RealizarLeitura()).Returns(_entities);
+            _service.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportPetComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportPetComando importacao = new (_leitor.Object, _service.Object);
             
             var result = await importacao.ExecutarComando();
             var pet = (SuccessImport<Pet>)result.Successes.First();
