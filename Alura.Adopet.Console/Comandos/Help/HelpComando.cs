@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 
-namespace Alura.Adopet.Console.Comandos
+namespace Alura.Adopet.Console.Comandos.Help
 {
     [ClassDocuments("help", "Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
     public class HelpComando(string? comando = null) : IComando

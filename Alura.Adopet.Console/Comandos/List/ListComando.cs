@@ -1,11 +1,11 @@
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
-using FluentResults;
 using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.Entities;
+using FluentResults;
 
-namespace Alura.Adopet.Console.Comandos
+namespace Alura.Adopet.Console.Comandos.List
 {
     [ClassDocuments("list", "Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list")]
     public class ListComando : IComando
