@@ -2,7 +2,7 @@ using Alura.Adopet.Console.Comandos.Import;
 using Alura.Adopet.Console.Factory.Comandos;
 using FluentAssertions;
 
-namespace Alura.Adopet.Console.Tests.Comandos.Factory
+namespace Alura.Adopet.Console.Tests.Factory.Comandos
 {
     public class SelecionaComandoTest
     {

@@ -2,18 +2,18 @@ using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
-using Moq;
 using Alura.Adopet.Console.Comandos.Import;
+using Moq;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
-    public class ImportComandoTest
+    public class ImportPetComandoTest
     {
         private readonly Mock<ILeitor<Pet>> _leitorArquivo = new();
         private readonly Mock<IAPIService<Pet>> _clientPet = new();
         private readonly List<Pet> _pets;
 
-        public ImportComandoTest()
+        public ImportPetComandoTest()
         {
             _pets = 
             [
@@ -27,7 +27,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
             _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportComando<Pet> importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportPetComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
 
@@ -40,7 +40,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Import
             _leitorArquivo.Setup(x => x.RealizarLeitura()).Returns(_pets);
             _clientPet.Setup(x => x.CreateAsync(It.IsAny<Pet>()));
 
-            ImportComando<Pet> importacao = new (_leitorArquivo.Object, _clientPet.Object);
+            ImportPetComando importacao = new (_leitorArquivo.Object, _clientPet.Object);
             
             var result = await importacao.ExecutarComando();
             var pet = (SuccessImport<Pet>)result.Successes.First();

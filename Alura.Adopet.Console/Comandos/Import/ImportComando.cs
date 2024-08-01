@@ -8,16 +8,11 @@ using FluentResults;
 namespace Alura.Adopet.Console.Comandos.Import
 {
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>")]
-    public class ImportComando<T> : IComando
+    public abstract class ImportComando<T>(
+        ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet) : IComando
     {
-        private readonly IAPIService<T> _client;
-        private readonly ILeitor<T> _leitorArquivo;
-        
-        public ImportComando(ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet)
-        {
-            _leitorArquivo = leitorArquivo;
-            _client = httpClientPet;
-        }
+        private readonly IAPIService<T> _client = httpClientPet;
+        private readonly ILeitor<T> _leitorArquivo = leitorArquivo;
 
         public async Task<Result> ExecutarComando()
         {
