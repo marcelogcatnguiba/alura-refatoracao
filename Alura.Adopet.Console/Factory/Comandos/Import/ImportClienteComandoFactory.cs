@@ -2,7 +2,7 @@ using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.Factory.Interfaces;
 
-namespace Alura.Adopet.Console.Factory.Comandos
+namespace Alura.Adopet.Console.Factory.Comandos.Import
 {
     public class ImportClienteComandoFactory : IComandoFactory
     {

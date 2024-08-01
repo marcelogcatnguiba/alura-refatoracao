@@ -2,7 +2,7 @@ using System.Reflection;
 using Alura.Adopet.Console.Factory.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 
-namespace Alura.Adopet.Console.Factory
+namespace Alura.Adopet.Console.Factory.Services
 {
     public class SelecionaServico<T>
     {

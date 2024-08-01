@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Factory.Interfaces;
 using Alura.Adopet.Console.Readers;
 using Alura.Adopet.Console.Readers.Interfaces;
 
-namespace Alura.Adopet.Console.Factory
+namespace Alura.Adopet.Console.Factory.Leitores
 {
     public abstract class SelecionaLeitor<T>
     {
