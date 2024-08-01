@@ -1,6 +1,7 @@
 using Alura.Adopet.Console.Comandos.Help;
 using Alura.Adopet.Console.Comandos.Import;
 using Alura.Adopet.Console.Comandos.Show;
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Factory.Comandos;
 using FluentAssertions;
 
@@ -47,11 +48,11 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
         [Fact]
         public void DeveRetornarComando_Show()
         {
-            string[] args = ["show", "lista.csv"];
+            string[] args = ["show-pet", "lista.csv"];
             
             var result = SelecionaComando.CriarComando(args);
 
-            result.Should().BeOfType<ShowComando>();
+            result.Should().BeOfType<ShowPetComando>();
         }
 
         // [Fact]

@@ -38,8 +38,8 @@ namespace Alura.Adopet.Console.UI
                     ExibirPets(l.Pets);
                     break;
 
-                case SuccessShow ss:
-                    ExibirListaAImportar(ss.Pets);
+                case SuccessShow<Pet> ss:
+                    ExibirListaAImportar(ss.Entities);
                     break;
 
                 case SuccessHelp h:

@@ -61,7 +61,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Show()
         {
-            HelpComando help = new(["help", "show"]);
+            HelpComando help = new(["help", "show-pet"]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();

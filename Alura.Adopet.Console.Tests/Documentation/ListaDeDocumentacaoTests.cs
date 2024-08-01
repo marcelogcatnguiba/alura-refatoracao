@@ -46,7 +46,7 @@ namespace Alura.Adopet.Console.Tests.Documentation
         [Trait("Documentacao", "Show")]
         public void DeveRetornarDocumentacao_Show()
         {
-            var comando = "show";
+            var comando = "show-pet";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             
             result

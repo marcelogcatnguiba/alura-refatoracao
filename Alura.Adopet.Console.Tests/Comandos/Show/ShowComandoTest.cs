@@ -26,11 +26,11 @@ namespace Alura.Adopet.Console.Tests.Comandos.Show
             Mock<LeitorCSVPet> leitor = new(Configuration.CaminhoArquivoImportacao);
             leitor.Setup(x => x.RealizarLeitura()).Returns(_pets);
 
-            ShowComando show = new(leitor.Object);
+            ShowComando<Pet> show = new(leitor.Object);
             var success = await show.ExecutarComando();
-            var result = (SuccessShow)success.Successes.First();
+            var result = (SuccessShow<Pet>)success.Successes.First();
             
-            result.Pets.Should().HaveCount(3);
+            result.Entities.Should().HaveCount(3);
         }
     }
 }

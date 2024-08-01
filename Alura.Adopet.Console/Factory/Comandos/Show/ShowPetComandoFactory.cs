@@ -5,11 +5,11 @@ using Alura.Adopet.Console.Factory.Leitores;
 
 namespace Alura.Adopet.Console.Factory.Comandos.Show
 {
-    public class ShowComandoFactory : IComandoFactory
+    public class ShowPetComandoFactory : IComandoFactory
     {
         public bool ConsegueCriarComando(Type? type)
         {
-            return type?.IsAssignableTo(typeof(ShowComando)) ?? false;
+            return type?.IsAssignableTo(typeof(ShowPetComando)) ?? false;
         }
 
         public IComando? CriarComando(string[] args)
@@ -18,7 +18,7 @@ namespace Alura.Adopet.Console.Factory.Comandos.Show
 
             if(leitor is not null)
             {
-                return new ShowComando(leitor);
+                return new ShowPetComando(leitor);
             }
 
             return null;

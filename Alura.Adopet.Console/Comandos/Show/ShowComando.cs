@@ -1,28 +1,25 @@
-using Alura.Adopet.Console.SuccessResult;
-using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.Leitores.Interfaces;
-using Alura.Adopet.Console.Entities;
+using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos.Show
 {
-    [ClassDocuments("show", "Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.")]
-    public class ShowComando(ILeitor<Pet> leitorArquivo) : IComando
+    public class ShowComando<T>(ILeitor<T> leitorArquivo) : IComando
     {
-        private readonly ILeitor<Pet> _leitorDeArquivo = leitorArquivo;
+        private readonly ILeitor<T> _leitorDeArquivo = leitorArquivo;
 
         public async Task<Result> ExecutarComando()
         {
-            return await ListarPetsDeArquivo();
+            return await ListarEntidadesDeArquivo();
         }
 
-        public Task<Result> ListarPetsDeArquivo()
+        public Task<Result> ListarEntidadesDeArquivo()
         {
             try
             {
-                var listaDePet = _leitorDeArquivo.RealizarLeitura();
-                return Task.FromResult(Result.Ok().WithSuccess(new SuccessShow(listaDePet)));
+                var lista = _leitorDeArquivo.RealizarLeitura();
+                return Task.FromResult(Result.Ok().WithSuccess(new SuccessShow<T>(lista)));
             }
             catch(Exception e)
             {
