@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Leitores;
 using Alura.Adopet.Console.Leitores.Interfaces;
+using Alura.Adopet.Console.Leitores.LeitoresPets;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Readers

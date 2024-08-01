@@ -1,9 +1,9 @@
 using Alura.Adopet.Console.Services;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
+using Alura.Adopet.Console.Comandos.List;
 
 namespace Alura.Adopet.Console.Tests.Comandos.List
 {

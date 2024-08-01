@@ -1,9 +1,9 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 using Moq;
+using Alura.Adopet.Console.Comandos.Import;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
