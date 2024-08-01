@@ -6,16 +6,16 @@ using FluentResults;
 namespace Alura.Adopet.Console.Comandos.Help
 {
     [ClassDocuments("help", "Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help")]
-    public class HelpComando(string? comando = null) : IComando
+    public class HelpComando(string[] args) : IComando
     {
-        private readonly string? _comando = comando;
-
         public async Task<Result> ExecutarComando()
         {
-            if (_comando is null) 
-                return await AjudaComandos();
-
-            return await AjudaComandoEspecifico(_comando);
+            if(args.Length == 2)
+            {
+                return await AjudaComandoEspecifico(comando: args[1]);
+            }
+            
+            return await AjudaComandos();
         }
         
         private static Task<Result> AjudaComandos()

@@ -9,7 +9,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacaoTotal_QuandoComandoNull()
         {
-            HelpComando help = new();
+            HelpComando help = new([]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -20,7 +20,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Help()
         {
-            HelpComando help = new("help");
+            HelpComando help = new(["help", "help"]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -35,7 +35,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [InlineData("import-pet")]
         public async Task DeveMostrarDocumentacao_Import(string comando)
         {
-            HelpComando help = new(comando);
+            HelpComando help = new(["help", comando]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -48,7 +48,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_List()
         {
-            HelpComando help = new("list");
+            HelpComando help = new(["help", "list"]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
@@ -61,7 +61,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
         [Fact]
         public async Task DeveMostrarDocumentacao_Show()
         {
-            HelpComando help = new("show");
+            HelpComando help = new(["help", "show"]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();

@@ -1,4 +1,6 @@
+using Alura.Adopet.Console.Comandos.Help;
 using Alura.Adopet.Console.Comandos.Import;
+using Alura.Adopet.Console.Comandos.Show;
 using Alura.Adopet.Console.Factory.Comandos;
 using FluentAssertions;
 
@@ -25,5 +27,41 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
 
             result.Should().BeOfType<ImportPetComando>();
         }
+
+        [Theory]
+        [InlineData("help")]
+        [InlineData("help", "help")]
+        [InlineData("help", "list")]
+        [InlineData("help", "show")]
+        [InlineData("help", "import-cliente")]
+        [InlineData("help", "import-pet")]
+        public void DeveRetornarComando_Help(string comando, string comandoEspecifico = "")
+        {
+            string[] args = [comando, comandoEspecifico];
+            
+            var result = SelecionaComando.CriarComando(args);
+
+            result.Should().BeOfType<HelpComando>();
+        }
+
+        // [Fact]
+        // public void DeveRetornarComando_Show()
+        // {
+        //     string[] args = ["show", "lista.csv"];
+            
+        //     var result = SelecionaComando.CriarComando(args);
+
+        //     result.Should().BeOfType<ShowComando>();
+        // }
+
+        // [Fact]
+        // public void DeveRetornarComando_List()
+        // {
+        //     string[] args = ["list"];
+            
+        //     var result = SelecionaComando.CriarComando(args);
+
+        //     result.Should().BeOfType<ShowComando>();
+        // }
     }
 }
