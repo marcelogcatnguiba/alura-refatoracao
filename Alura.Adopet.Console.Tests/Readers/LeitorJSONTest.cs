@@ -1,7 +1,5 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Readers;
-using Alura.Adopet.Console.Readers.Abstracao;
-using Alura.Adopet.Console.Readers.LeitoresPet;
+using Alura.Adopet.Console.Leitores.LeitoresPets;
 using FluentAssertions;
 using Newtonsoft.Json;
 

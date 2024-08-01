@@ -31,7 +31,7 @@ namespace Alura.Adopet.Console.UI
             switch(success)
             {
                 case SuccessImport<Pet> i:
-                    ExibirImportacao(i.Pets);
+                    ExibirImportacao(i.Entities);
                     break;
 
                 case SuccessList l:
@@ -58,8 +58,9 @@ namespace Alura.Adopet.Console.UI
             System.Console.ForegroundColor = ConsoleColor.Red;
 
             var error = result.Errors.First();
-            var reason = error.Reasons.First();
-            System.Console.WriteLine($"Aconteceu um exceção: {error.Message}\nCausada por: {reason.Message}");
+            var reason = error.Reasons.FirstOrDefault();
+            System.Console.WriteLine($"Aconteceu um exceção: {error.Message}\nCausada por: {reason?.Message}");
+            
         }
 
         private static void ExibirImportacao(IEnumerable<Pet> pets)

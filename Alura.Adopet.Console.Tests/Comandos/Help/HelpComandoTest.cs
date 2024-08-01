@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.Comandos;
+using Alura.Adopet.Console.Comandos.Help;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 
@@ -30,17 +30,19 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
                 .Be("Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help");
         }
 
-        [Fact]
-        public async Task DeveMostrarDocumentacao_Import()
+        [Theory]
+        [InlineData("import-cliente")]
+        [InlineData("import-pet")]
+        public async Task DeveMostrarDocumentacao_Import(string comando)
         {
-            HelpComando help = new("import");
+            HelpComando help = new(comando);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
 
             result.Comando
                 .Should()
-                .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>");
+                .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-cliente ou import-pet <arquivo>");
         }
 
         [Fact]

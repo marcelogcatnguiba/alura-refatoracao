@@ -2,8 +2,8 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.SuccessResult
 {
-    public class SuccessImport<T>(IEnumerable<T> pets) : Success
+    public class SuccessImport<T>(IEnumerable<T> entities) : Success
     {
-        public IEnumerable<T> Pets { get; set; } = pets;
+        public IEnumerable<T> Entities { get; set; } = entities;
     }
 }
