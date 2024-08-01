@@ -2,10 +2,10 @@ using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
-using FluentResults;
 using Alura.Adopet.Console.Services.Interfaces;
+using FluentResults;
 
-namespace Alura.Adopet.Console.Comandos
+namespace Alura.Adopet.Console.Comandos.Import
 {
     [ClassDocuments("import", "Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>")]
     public class ImportComando<T> : IComando
