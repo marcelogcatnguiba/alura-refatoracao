@@ -42,11 +42,11 @@ namespace Alura.Adopet.Console.Tests.Documentation
                 .Be("Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list");
         }
         
-        [Fact]
-        [Trait("Documentacao", "Show")]
-        public void DeveRetornarDocumentacao_Show()
+        [Theory]
+        [InlineData("show-pet")]
+        [InlineData("show-cliente")]
+        public void DeveRetornarDocumentacao_Show(string comando)
         {
-            var comando = "show-pet";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             
             result

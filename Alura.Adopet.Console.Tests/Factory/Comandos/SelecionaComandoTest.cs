@@ -30,15 +30,16 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
         }
 
         [Theory]
+        [InlineData("")]
         [InlineData("help")]
-        [InlineData("help", "help")]
-        [InlineData("help", "list")]
-        [InlineData("help", "show")]
-        [InlineData("help", "import-cliente")]
-        [InlineData("help", "import-pet")]
-        public void DeveRetornarComando_Help(string comando, string comandoEspecifico = "")
+        [InlineData("list")]
+        [InlineData("show-cliente")]
+        [InlineData("show-pet")]
+        [InlineData("import-cliente")]
+        [InlineData("import-pet")]
+        public void DeveRetornarComando_Help(string comando = "")
         {
-            string[] args = [comando, comandoEspecifico];
+            string[] args = ["help", comando];
             
             var result = SelecionaComando.CriarComando(args);
 
@@ -46,13 +47,23 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
         }
 
         [Fact]
-        public void DeveRetornarComando_Show()
+        public void DeveRetornarComando_ShowPet()
         {
             string[] args = ["show-pet", "lista.csv"];
             
             var result = SelecionaComando.CriarComando(args);
 
             result.Should().BeOfType<ShowPetComando>();
+        }
+        
+        [Fact]
+        public void DeveRetornarComando_ShowCliente()
+        {
+            string[] args = ["show-cliente", "lista.csv"];
+            
+            var result = SelecionaComando.CriarComando(args);
+
+            result.Should().BeOfType<ShowClienteComando>();
         }
 
         // [Fact]

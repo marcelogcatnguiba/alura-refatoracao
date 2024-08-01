@@ -58,10 +58,12 @@ namespace Alura.Adopet.Console.Tests.Comandos.Help
                 .Be("Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list");
         }
         
-        [Fact]
-        public async Task DeveMostrarDocumentacao_Show()
+        [Theory]
+        [InlineData("show-pet")]
+        [InlineData("show-cliente")]
+        public async Task DeveMostrarDocumentacao_Show(string comando)
         {
-            HelpComando help = new(["help", "show-pet"]);
+            HelpComando help = new(["help", comando]);
 
             var success = await help.ExecutarComando();
             var result = (SuccessHelp)success.Successes.First();
