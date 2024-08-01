@@ -18,16 +18,16 @@ namespace Alura.Adopet.Console.Tests.Documentation
                 .Be("Exibe informações de ajuda dos comandos.\nDigite adopet help <comando> ou simplemente adopet help");
         }
 
-        [Fact]
-        [Trait("Documentacao", "Import")]
-        public void DeveRetornarDocumentacao_Import()
+        [Theory]
+        [InlineData("import-cliente")]
+        [InlineData("import-pet")]
+        public void DeveRetornarDocumentacao_Import(string comando)
         {
-            var comando = "import";
             var result = ListaDeDocumentacao.GetDocumentacao(comando);
             
             result
                 .Should()
-                .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>");
+                .Be("Realiza a importação em lote de um arquivos.\nDigite adopet import-cliente ou import-pet <arquivo>");
         }
 
         [Fact]

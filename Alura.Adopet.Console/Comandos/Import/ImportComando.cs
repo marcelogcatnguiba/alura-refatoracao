@@ -1,4 +1,3 @@
-using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
@@ -7,7 +6,6 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos.Import
 {
-    [ClassDocuments("import", "Realiza a importação em lote de um arquivos.\nDigite adopet import-[clientes / pets] <arquivo>")]
     public abstract class ImportComando<T>(
         ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet) : IComando
     {
