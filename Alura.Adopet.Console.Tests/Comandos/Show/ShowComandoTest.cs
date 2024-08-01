@@ -3,7 +3,7 @@ using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Leitores;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Show
 {

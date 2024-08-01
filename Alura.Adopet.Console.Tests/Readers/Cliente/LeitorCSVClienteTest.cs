@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.Readers;
+using Alura.Adopet.Console.Leitores;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Readers.Cliente

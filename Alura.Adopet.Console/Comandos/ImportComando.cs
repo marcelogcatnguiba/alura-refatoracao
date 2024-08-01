@@ -1,5 +1,5 @@
 using Alura.Adopet.Console.Documentation;
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;

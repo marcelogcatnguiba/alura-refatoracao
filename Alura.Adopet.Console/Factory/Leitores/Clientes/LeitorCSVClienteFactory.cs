@@ -1,7 +1,7 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Factory.Interfaces;
-using Alura.Adopet.Console.Readers;
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
+using Alura.Adopet.Console.Leitores.LeitoresClientes;
 
 namespace Alura.Adopet.Console.Factory.Leitores.Clientes
 {

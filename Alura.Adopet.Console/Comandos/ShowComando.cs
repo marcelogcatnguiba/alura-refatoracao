@@ -2,7 +2,7 @@ using Alura.Adopet.Console.SuccessResult;
 using Alura.Adopet.Console.Documentation;
 using FluentResults;
 using Alura.Adopet.Console.Comandos.Interfaces;
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Entities;
 
 namespace Alura.Adopet.Console.Comandos

@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Factory.Interfaces;
 
-namespace Alura.Adopet.Console.Factory
+namespace Alura.Adopet.Console.Factory.Comandos
 {
     public static class SelecionaComando
     {

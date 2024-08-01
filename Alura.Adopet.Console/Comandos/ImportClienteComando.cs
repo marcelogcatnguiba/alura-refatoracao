@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Documentation;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 
 namespace Alura.Adopet.Console.Comandos

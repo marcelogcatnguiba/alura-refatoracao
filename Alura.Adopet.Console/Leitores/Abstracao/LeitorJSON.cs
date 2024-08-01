@@ -1,7 +1,7 @@
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 using Newtonsoft.Json;
 
-namespace Alura.Adopet.Console.Readers.Abstracao
+namespace Alura.Adopet.Console.Leitores.Abstracao
 {
     public abstract class LeitorJSON<T>(string caminhoDoArquivo) : ILeitor<T>
     {

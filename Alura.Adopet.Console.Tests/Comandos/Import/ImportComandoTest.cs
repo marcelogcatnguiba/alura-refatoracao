@@ -1,7 +1,7 @@
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.SuccessResult;
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 using Moq;
 

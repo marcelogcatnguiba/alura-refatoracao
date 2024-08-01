@@ -1,4 +1,4 @@
-namespace Alura.Adopet.Console.Readers
+namespace Alura.Adopet.Console.Leitores
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class LeitorAtribute(string extensaoArquivo) : Attribute

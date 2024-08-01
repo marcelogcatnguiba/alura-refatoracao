@@ -1,4 +1,4 @@
-using Alura.Adopet.Console.Readers.Interfaces;
+using Alura.Adopet.Console.Leitores.Interfaces;
 
 namespace Alura.Adopet.Console.Factory.Interfaces
 {
