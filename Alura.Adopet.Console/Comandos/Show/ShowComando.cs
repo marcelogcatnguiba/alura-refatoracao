@@ -8,15 +8,10 @@ using FluentResults;
 namespace Alura.Adopet.Console.Comandos.Show
 {
     [ClassDocuments("show", "Comando que exibe no terminal o conteúdo do arquivo importado.\nDigite adopet show <arquivo>.")]
-    public class ShowComando : IComando
+    public class ShowComando(ILeitor<Pet> leitorArquivo) : IComando
     {
-        private readonly ILeitor<Pet> _leitorDeArquivo;
+        private readonly ILeitor<Pet> _leitorDeArquivo = leitorArquivo;
 
-        public ShowComando(ILeitor<Pet> leitorArquivo)
-        {
-            _leitorDeArquivo = leitorArquivo;
-        }
-        
         public async Task<Result> ExecutarComando()
         {
             return await ListarPetsDeArquivo();

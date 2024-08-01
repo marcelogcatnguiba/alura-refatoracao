@@ -13,7 +13,7 @@ namespace Alura.Adopet.Console.Factory.Comandos.Import
             return type?.IsAssignableTo(typeof(ImportClienteComando)) ?? false;
         }
 
-        public IComando CriarComando(string[] args)
+        public IComando? CriarComando(string[] args)
         {
             var leitor = SelecionaLeitorCliente.CriarLeitor(caminhoArquivo: args[1]);
             var service = SelecionaServicoCliente.CriarServico();

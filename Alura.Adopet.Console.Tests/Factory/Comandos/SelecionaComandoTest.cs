@@ -44,15 +44,15 @@ namespace Alura.Adopet.Console.Tests.Factory.Comandos
             result.Should().BeOfType<HelpComando>();
         }
 
-        // [Fact]
-        // public void DeveRetornarComando_Show()
-        // {
-        //     string[] args = ["show", "lista.csv"];
+        [Fact]
+        public void DeveRetornarComando_Show()
+        {
+            string[] args = ["show", "lista.csv"];
             
-        //     var result = SelecionaComando.CriarComando(args);
+            var result = SelecionaComando.CriarComando(args);
 
-        //     result.Should().BeOfType<ShowComando>();
-        // }
+            result.Should().BeOfType<ShowComando>();
+        }
 
         // [Fact]
         // public void DeveRetornarComando_List()

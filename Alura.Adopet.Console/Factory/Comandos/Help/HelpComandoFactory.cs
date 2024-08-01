@@ -11,7 +11,7 @@ namespace Alura.Adopet.Console.Factory.Comandos.Help
             return type?.IsAssignableTo(typeof(HelpComando)) ?? false;
         }
 
-        public IComando CriarComando(string[] args)
+        public IComando? CriarComando(string[] args)
         {
             return new HelpComando(args);
         }

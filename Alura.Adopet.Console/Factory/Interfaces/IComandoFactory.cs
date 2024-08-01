@@ -5,6 +5,6 @@ namespace Alura.Adopet.Console.Factory.Interfaces
     public interface IComandoFactory
     {
         bool ConsegueCriarComando(Type? type);
-        IComando CriarComando(string[] args);
+        IComando? CriarComando(string[] args);
     }
 }
