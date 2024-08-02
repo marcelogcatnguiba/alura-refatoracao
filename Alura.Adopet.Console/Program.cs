@@ -13,5 +13,3 @@ else
 {
     ConsoleUI.ExibeResultado(Result.Fail("Comando invalido"));
 }
-
-

@@ -33,12 +33,24 @@ namespace Alura.Adopet.Console.UI
                 case SuccessImport<Pet> i:
                     ExibirImportacao(i.Entities);
                     break;
+                
+                case SuccessImport<Cliente> i:
+                    ExibirImportacao(i.Entities);
+                    break;
 
                 case SuccessList<Pet> l:
-                    ExibirPets(l.Entities);
+                    ExibirEntities(l.Entities);
+                    break;
+                
+                case SuccessList<Cliente> l:
+                    ExibirEntities(l.Entities);
                     break;
 
                 case SuccessShow<Pet> ss:
+                    ExibirListaAImportar(ss.Entities);
+                    break;
+                
+                case SuccessShow<Cliente> ss:
                     ExibirListaAImportar(ss.Entities);
                     break;
 
@@ -63,21 +75,40 @@ namespace Alura.Adopet.Console.UI
             
         }
 
-        private static void ExibirImportacao(IEnumerable<Pet> pets)
+        private static void ExibirImportacao(IEnumerable<Pet> entities)
         {
-            ExibirPets(pets);
+            ExibirEntities(entities);
             System.Console.WriteLine("\n\nImportacao realizada com sucesso !!!.");
         }
-        private static void ExibirPets(IEnumerable<Pet> pets)
+
+        private static void ExibirImportacao(IEnumerable<Cliente> entities)
         {
-            foreach(var p in pets)
+            ExibirEntities(entities);
+            System.Console.WriteLine("\n\nImportacao realizada com sucesso !!!.");
+        }
+
+        private static void ExibirEntities(IEnumerable<Pet> entities)
+        {
+            foreach(var p in entities)
+                System.Console.WriteLine(p);
+        }
+        
+        private static void ExibirEntities(IEnumerable<Cliente> entities)
+        {
+            foreach(var p in entities)
                 System.Console.WriteLine(p);
         }
 
-        private static void ExibirListaAImportar(IEnumerable<Pet> pets)
+        private static void ExibirListaAImportar(IEnumerable<Pet> entities)
         {
             System.Console.WriteLine("----- Serão importados os dados abaixo -----");
-            ExibirPets(pets);
+            ExibirEntities(entities);
+        }
+        
+        private static void ExibirListaAImportar(IEnumerable<Cliente> entities)
+        {
+            System.Console.WriteLine("----- Serão importados os dados abaixo -----");
+            ExibirEntities(entities);
         }
 
         private static void ExibirComandos()

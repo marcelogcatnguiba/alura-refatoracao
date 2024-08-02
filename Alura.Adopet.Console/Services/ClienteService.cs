@@ -10,12 +10,12 @@ namespace Alura.Adopet.Console.Services
 
         public virtual async Task CreateAsync(Cliente cliente)
         {
-            await _client.PostAsJsonAsync("cliente/add", cliente);
+            await _client.PostAsJsonAsync("proprietario/add", cliente);
         }
 
         public virtual async Task<IEnumerable<Cliente>?> ListAsync()
         {
-            HttpResponseMessage response = await _client.GetAsync("cliente/list");
+            HttpResponseMessage response = await _client.GetAsync("proprietario/list");
             return await response.Content.ReadFromJsonAsync<IEnumerable<Cliente>>();
         }
     }
