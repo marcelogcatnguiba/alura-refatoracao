@@ -2,9 +2,9 @@ using System.Net.Http.Headers;
 
 namespace Alura.Adopet.Console.Services
 {
-    public class HttpClientFactory : IHttpClientFactory
+    public class HttpClientFactory(string uri) : IHttpClientFactory
     {
-        private readonly string _uri = Configuration.UrlAdoPet;
+        private readonly string _uri = uri;
         public HttpClient CreateClient(string name)
         {
             HttpClient client = new ();

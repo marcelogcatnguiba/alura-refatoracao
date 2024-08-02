@@ -4,6 +4,7 @@ using Alura.Adopet.Console.Comandos.List;
 using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
+using Alura.Adopet.Console.Settings;
 
 namespace Alura.Adopet.Console.Tests.Comandos.List
 {
@@ -19,7 +20,7 @@ namespace Alura.Adopet.Console.Tests.Comandos.List
                 new(Guid.NewGuid(), "Kira", TipoPet.Gato)
             ];
 
-            Mock<PetService> clientMock = new(new HttpClientFactory().CreateClient());
+            Mock<PetService> clientMock = new(new HttpClientFactory(Configurations.ApiSettings.Uri).CreateClient());
             clientMock.Setup(x => x.ListAsync()).ReturnsAsync(listaPets);
 
             ListPetComando service = new(clientMock.Object);
