@@ -1,14 +1,17 @@
 using System.Net;
 using System.Net.Mail;
+using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Services.Email;
 using Alura.Adopet.Console.Services.Email.Interfaces;
 using Alura.Adopet.Console.Settings;
+using Alura.Adopet.Console.SuccessResult;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Email
 {
-    public class EnviarEmail
+    public static class EnviarEmail
     {
-        public static IEmailService CriarEmailService()
+        private static IEmailService CriarEmail()
         {
             EmailSettings emailSettings = Configurations.EmailSettings;
 
@@ -22,6 +25,28 @@ namespace Alura.Adopet.Console.Email
             };
 
             return new SmtpEmailService(smtpClient);
+        }
+
+        public static void DispararEmail(Result result)
+        {
+            var successes = result.Successes.FirstOrDefault();
+            
+            if(successes is null)
+            {
+                return;
+            }
+
+            if(successes is SuccessImport<Pet> pets)
+            {
+                var email = CriarEmail();
+                email.EnviarEmail
+                (
+                    remetente: "marcelogomes.0104@gmail.com",
+                    titulo: $"Adopet {pets.Message}",
+                    corpo: $"Foram importados {pets.Entities.Count()} pets.",
+                    destinatario: "marcelogomes.0104@gmail.com"
+                );
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/Alura.Adopet.Console/bin/Debug/net8.0/Alura.Adopet.Console.dll",
-            "args": ["import-cliente", "Arquivos\\clientes.csv"],
+            "args": ["import-pet", "Arquivos\\pets.csv"],
             "cwd": "${workspaceFolder}/Alura.Adopet.Console",
             "console": "internalConsole",
             "stopAtEntry": false

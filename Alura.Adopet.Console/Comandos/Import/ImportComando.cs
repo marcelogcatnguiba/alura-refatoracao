@@ -7,10 +7,11 @@ using FluentResults;
 namespace Alura.Adopet.Console.Comandos.Import
 {
     public class ImportComando<T>(
-        ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet) : IComando
+        ILeitor<T> leitorArquivo, IAPIService<T> httpClientPet) : IComando, IComandoEventos
     {
         private readonly IAPIService<T> _client = httpClientPet;
         private readonly ILeitor<T> _leitorArquivo = leitorArquivo;
+        public event Action<Result>? DepoisDaExecucao;
 
         public async Task<Result> ExecutarComando()
         {
@@ -28,7 +29,10 @@ namespace Alura.Adopet.Console.Comandos.Import
                     await _client.CreateAsync(obj);
                 }
 
-                return Result.Ok().WithSuccess(new SuccessImport<T>(lista));
+                var result = Result.Ok().WithSuccess(new SuccessImport<T>(lista, "Importação realizada com sucesso !!"));
+                DepoisDaExecucao?.Invoke(result);
+
+                return result;
             }
             catch(NullReferenceException ex)
             {
