@@ -37,6 +37,7 @@ namespace Alura.Adopet.Console.Tests.Leitores.Pets
         public void Dispose()
         {
             File.Delete(_caminhoArquivo);
+            GC.SuppressFinalize(this);
         }
     }
 }

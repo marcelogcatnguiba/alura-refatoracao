@@ -3,7 +3,7 @@ using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Leitores.Clientes
 {
-    public class LeitorCSVClienteTest
+    public class LeitorCSVClienteTest : IDisposable
     {
         private readonly string _caminhoArquivo;
         public LeitorCSVClienteTest()
@@ -27,6 +27,13 @@ namespace Alura.Adopet.Console.Tests.Leitores.Clientes
             var result = leitor.RealizarLeitura();
 
             result.Should().HaveCount(3);
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            File.Delete(_caminhoArquivo);
+            GC.SuppressFinalize(this);
         }
     }
 }

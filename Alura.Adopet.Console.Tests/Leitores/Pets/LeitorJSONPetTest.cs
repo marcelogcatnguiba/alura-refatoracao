@@ -37,7 +37,8 @@ namespace Alura.Adopet.Console.Tests.Leitores.Pets
 
         public void Dispose()
         {
-            File.Delete("pets.json");
+            File.Delete(_caminho);
+            GC.SuppressFinalize(this);
         }
     }
 }
