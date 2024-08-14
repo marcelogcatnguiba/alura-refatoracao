@@ -32,5 +32,17 @@ namespace Alura.Adopet.Console.Extensions
 
             return new Pet(petId, petNome, petTipo);
         }
+
+        public static Cliente RetornaClienteString(this string clienteString)
+        {
+            string[] obj = clienteString.Split(";");
+
+            return new Cliente
+            (
+                id: Guid.Parse(obj[0]),
+                nome: obj[1],
+                email: obj[2]
+            );
+        }
     }
 }
