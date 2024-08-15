@@ -12,6 +12,7 @@ namespace Alura.Adopet.Console.Tests.Leitores.Pets
         {
             string pets = 
             """
+                Id;Nome;Tipo
                 456b24f4-19e2-4423-845d-4a80e8854a41;Lima Limão;1
                 3aeff89d-7da2-4603-852e-d232fbdc56bd;Caito;1
                 bcdcb7a4-1279-4a6b-97e9-da6378ae6437;Jujuba;2

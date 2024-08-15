@@ -10,6 +10,7 @@ namespace Alura.Adopet.Console.Tests.Leitores.Clientes
         {
             string clientes = 
             """
+                Id;Nome;Email
                 456b24f4-19e2-4423-845d-4a80e8854a41;Fulnao de Tal;fulano@example.org
                 3aeff89d-7da2-4603-852e-d232fbdc56bd;Jose Silva;silva@example.org
                 609c9b0d-aa02-459f-a340-256513fc9bad;Rogerio Milano;milano@example.org
