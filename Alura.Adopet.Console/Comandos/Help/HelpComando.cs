@@ -26,7 +26,15 @@ namespace Alura.Adopet.Console.Comandos.Help
         private static Task<Result> AjudaComandoEspecifico(string comando)
         {
             var comandoInformacao = ListaDeDocumentacao.GetDocumentacao(comando);
-            return Task.FromResult(Result.Ok().WithSuccess(new SuccessHelp(comandoInformacao)));
+
+            if(comandoInformacao != null)
+            {
+                return Task.FromResult(
+                    Result.Ok().WithSuccess(new SuccessHelp(comandoInformacao)));
+            }
+
+            return Task.FromResult(
+                Result.Fail(new Error($"O comando {comandoInformacao} não existe na lista de comandos")));
         }
     }
 }

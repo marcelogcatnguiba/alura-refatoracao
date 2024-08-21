@@ -58,12 +58,11 @@ namespace Alura.Adopet.Console.Tests.Documentation
         public void DeveRetornarErro_QuandoNaoExistirDocumentacao()
         {
             var comando = "qualquer";
-            Action action = () => ListaDeDocumentacao.GetDocumentacao(comando);
+            var result = ListaDeDocumentacao.GetDocumentacao(comando);
 
-            action
+            result
                 .Should()
-                .Throw<DocumentationException>()
-                .WithMessage($"O comando {comando} não existe na lista de comandos");
+                .BeNull();
         }
     }
 }
