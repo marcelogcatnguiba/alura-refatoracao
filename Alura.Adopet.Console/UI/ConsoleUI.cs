@@ -117,10 +117,10 @@ namespace Alura.Adopet.Console.UI
             (
                 "Adopet (1.0) - Aplicativo de linha de comando (CLI).\n" +
                 "Lista de comandos.\n" +
-                "Import\n" +
-                "Help\n" +
-                "List\n" +
-                "Show\n" +
+                "import-cliente ou import-pet\n" +
+                "help\n" +
+                "list-cliente ou list-pet\n" +
+                "show-cliente ou show-pet\n" +
                 "Execute 'adopet help [comando]' para obter mais informações sobre um comando."
             );
         }
