@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Comandos.Help;
 using Alura.Adopet.Console.Comandos.Interfaces;
-using Alura.Adopet.Console.Factory.Interfaces;
+using Alura.Adopet.Console.Factory.Interfaces.Commands;
 
 namespace Alura.Adopet.Console.Factory.Comandos.Help
 {

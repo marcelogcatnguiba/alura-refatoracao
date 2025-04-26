@@ -1,6 +1,6 @@
 using System.Net.Http.Headers;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Services.Shared
 {
     public class HttpClientFactory(string uri) : IHttpClientFactory
     {

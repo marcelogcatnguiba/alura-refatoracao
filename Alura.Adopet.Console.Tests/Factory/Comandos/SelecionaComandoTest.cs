@@ -4,6 +4,7 @@ using Alura.Adopet.Console.Comandos.List;
 using Alura.Adopet.Console.Comandos.Show;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Factory.Comandos;
+using Alura.Adopet.Console.Factory.Comandos.Main;
 using FluentAssertions;
 
 namespace Alura.Adopet.Console.Tests.Factory.Comandos

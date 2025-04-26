@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.Entities;
+using Alura.Adopet.Console.Enums;
 using Alura.Adopet.Console.Exeptions;
 
 namespace Alura.Adopet.Console.Extensions

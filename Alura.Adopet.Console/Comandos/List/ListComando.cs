@@ -5,9 +5,9 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos.List
 {
-    public class ListComando<T>(IAPIService<T> service) : IComando
+    public class ListComando<T>(IApiService<T> service) : IComando
     {
-        private readonly IAPIService<T> _service = service;
+        private readonly IApiService<T> _service = service;
 
         public async Task<Result> ExecutarComando()
         {

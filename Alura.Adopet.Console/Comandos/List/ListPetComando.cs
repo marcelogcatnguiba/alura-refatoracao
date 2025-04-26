@@ -6,7 +6,7 @@ namespace Alura.Adopet.Console.Comandos.List
 {
     [ClassDocuments("list-pet", 
         "Comando que exibe a lista de pets cadastrados no sistema\nDigite adopet list")]
-    public class ListPetComando(IAPIService<Pet> service) : ListComando<Pet>(service)
+    public class ListPetComando(IApiService<Pet> service) : ListComando<Pet>(service)
     {
     }
 }

@@ -1,11 +1,12 @@
 using System.Net.Mail;
 using Alura.Adopet.Console.Services.Email.Interfaces;
 
-namespace Alura.Adopet.Console.Services.Email
+namespace Alura.Adopet.Console.Services.Email.Configuration
 {
     public class SmtpEmailService(SmtpClient smtpClient) : IEmailService
     {
         private readonly SmtpClient _smptClient = smtpClient;
+        
         public Task EnviarEmail(string remetente, string destinatario, string titulo, string corpo)
         {
             var mailMessage = new MailMessage()
@@ -16,7 +17,9 @@ namespace Alura.Adopet.Console.Services.Email
             };
 
             mailMessage.To.Add(new MailAddress(destinatario));
+
             _smptClient.Send(mailMessage);
+
             return Task.CompletedTask;
         }
     }

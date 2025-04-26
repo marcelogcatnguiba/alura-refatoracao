@@ -1,5 +1,5 @@
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Factory.Interfaces;
+using Alura.Adopet.Console.Factory.Interfaces.Leitores;
 using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Leitores.LeitoresPets;
 

@@ -1,5 +1,6 @@
 using System.Net;
 using Alura.Adopet.Console.Services;
+using Alura.Adopet.Console.Services.Clientes;
 using FluentAssertions;
 using Moq;
 using Moq.Protected;

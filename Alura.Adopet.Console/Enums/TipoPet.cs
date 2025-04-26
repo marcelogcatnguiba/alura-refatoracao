@@ -1,4 +1,4 @@
-﻿namespace Alura.Adopet.Console
+﻿namespace Alura.Adopet.Console.Enums
 {
     public enum TipoPet
     {

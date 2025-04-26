@@ -4,13 +4,14 @@ using Alura.Adopet.Console.Leitores.Interfaces;
 using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.Comandos.Import;
 using Moq;
+using Alura.Adopet.Console.Enums;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Import
 {
     public class ImportPetComandoTest
     {
         private readonly Mock<ILeitor<Pet>> _leitor = new();
-        private readonly Mock<IAPIService<Pet>> _service = new();
+        private readonly Mock<IApiService<Pet>> _service = new();
         private readonly List<Pet> _entities;
 
         public ImportPetComandoTest()

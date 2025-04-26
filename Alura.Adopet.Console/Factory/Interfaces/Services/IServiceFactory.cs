@@ -1,9 +1,9 @@
 using Alura.Adopet.Console.Services.Interfaces;
 
-namespace Alura.Adopet.Console.Factory.Interfaces
+namespace Alura.Adopet.Console.Factory.Interfaces.Services
 {
     public interface IServiceFactory<T>
     {
-        IAPIService<T> CriarServico();
+        IApiService<T> CriarServico();
     }
 }

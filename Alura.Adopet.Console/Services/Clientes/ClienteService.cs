@@ -2,9 +2,9 @@ using System.Net.Http.Json;
 using Alura.Adopet.Console.Services.Interfaces;
 using Alura.Adopet.Console.Entities;
 
-namespace Alura.Adopet.Console.Services
+namespace Alura.Adopet.Console.Services.Clientes
 {
-    public class ClienteService(HttpClient client) : IAPIService<Cliente>
+    public class ClienteService(HttpClient client) : IApiService<Cliente>
     {
         private readonly HttpClient _client = client;
 

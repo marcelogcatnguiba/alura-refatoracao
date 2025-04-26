@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Leitores.Interfaces;
 
-namespace Alura.Adopet.Console.Factory.Interfaces
+namespace Alura.Adopet.Console.Factory.Interfaces.Leitores
 {
     public interface ILeitorFactory<T>
     {

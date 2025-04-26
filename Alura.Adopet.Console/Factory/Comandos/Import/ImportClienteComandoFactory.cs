@@ -1,8 +1,8 @@
 using Alura.Adopet.Console.Comandos.Import;
 using Alura.Adopet.Console.Comandos.Interfaces;
-using Alura.Adopet.Console.Factory.Interfaces;
+using Alura.Adopet.Console.Factory.Interfaces.Commands;
 using Alura.Adopet.Console.Factory.Leitores;
-using Alura.Adopet.Console.Factory.Services;
+using Alura.Adopet.Console.Factory.Services.Main;
 
 namespace Alura.Adopet.Console.Factory.Comandos.Import
 {

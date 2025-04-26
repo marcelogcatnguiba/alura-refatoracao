@@ -5,6 +5,9 @@ using Alura.Adopet.Console.SuccessResult;
 using FluentAssertions;
 using Moq;
 using Alura.Adopet.Console.Settings;
+using Alura.Adopet.Console.Enums;
+using Alura.Adopet.Console.Services.Pets;
+using Alura.Adopet.Console.Services.Shared;
 
 namespace Alura.Adopet.Console.Tests.Comandos.List
 {

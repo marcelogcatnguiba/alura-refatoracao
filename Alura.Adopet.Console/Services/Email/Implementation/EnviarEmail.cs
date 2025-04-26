@@ -1,13 +1,13 @@
 using System.Net;
 using System.Net.Mail;
 using Alura.Adopet.Console.Entities;
-using Alura.Adopet.Console.Services.Email;
+using Alura.Adopet.Console.Services.Email.Configuration;
 using Alura.Adopet.Console.Services.Email.Interfaces;
 using Alura.Adopet.Console.Settings;
 using Alura.Adopet.Console.SuccessResult;
 using FluentResults;
 
-namespace Alura.Adopet.Console.Email
+namespace Alura.Adopet.Console.Services.Email.Implementation
 {
     public static class EnviarEmail
     {

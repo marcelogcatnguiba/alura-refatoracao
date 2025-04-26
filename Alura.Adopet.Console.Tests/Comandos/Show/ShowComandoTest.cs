@@ -4,6 +4,7 @@ using Moq;
 using Alura.Adopet.Console.Entities;
 using Alura.Adopet.Console.Leitores.LeitoresPets;
 using Alura.Adopet.Console.Comandos.Show;
+using Alura.Adopet.Console.Enums;
 
 namespace Alura.Adopet.Console.Tests.Comandos.Show
 {

@@ -1,9 +1,9 @@
 using System.Reflection;
-using Alura.Adopet.Console.Factory.Interfaces;
-using Alura.Adopet.Console.Leitores;
+using Alura.Adopet.Console.Factory.Interfaces.Leitores;
 using Alura.Adopet.Console.Leitores.Interfaces;
+using Alura.Adopet.Console.Leitores.Shared;
 
-namespace Alura.Adopet.Console.Factory.Leitores
+namespace Alura.Adopet.Console.Factory.Leitores.Main
 {
     public abstract class SelecionaLeitor<T>
     {

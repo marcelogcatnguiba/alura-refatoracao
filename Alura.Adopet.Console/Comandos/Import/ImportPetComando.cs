@@ -9,7 +9,7 @@ namespace Alura.Adopet.Console.Comandos.Import
         "Realiza a importação em lote de um arquivos.\nDigite adopet import-cliente ou import-pet <arquivo>")]
     public class ImportPetComando(
         ILeitor<Pet> leitorArquivo, 
-        IAPIService<Pet> httpClientPet) : ImportComando<Pet>(leitorArquivo, httpClientPet)
+        IApiService<Pet> httpClientPet) : ImportComando<Pet>(leitorArquivo, httpClientPet)
     {
     }
 }

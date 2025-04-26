@@ -1,9 +1,9 @@
 using System.Reflection;
 using Alura.Adopet.Console.Comandos.Interfaces;
 using Alura.Adopet.Console.Documentation;
-using Alura.Adopet.Console.Factory.Interfaces;
+using Alura.Adopet.Console.Factory.Interfaces.Commands;
 
-namespace Alura.Adopet.Console.Factory.Comandos
+namespace Alura.Adopet.Console.Factory.Comandos.Main
 {
     public static class SelecionaComando
     {

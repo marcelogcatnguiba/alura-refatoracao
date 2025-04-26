@@ -1,6 +1,6 @@
 namespace Alura.Adopet.Console.Services.Interfaces
 {
-    public interface IAPIService<T>
+    public interface IApiService<T>
     {
         Task CreateAsync(T obj);
         Task<IEnumerable<T>?> ListAsync();
